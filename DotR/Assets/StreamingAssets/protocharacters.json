@@ -1,0 +1,97 @@
+{
+  "$type": "System.Collections.Generic.List`1[[ProtoCharacterData, Assembly-CSharp]], mscorlib",
+  "$values": [
+    {
+      "$type": "ProtoCharacterData, Assembly-CSharp",
+      "Name": "Cleric",
+      "HP": 100,
+      "Abilities": {
+        "$type": "System.Collections.Generic.List`1[[ProtoAbilityData, Assembly-CSharp]], mscorlib",
+        "$values": [
+          {
+            "$type": "ProtoAbilityData, Assembly-CSharp",
+            "Name": "Attack",
+            "Desc": "Deal 10 damage.",
+            "Cost": 2,
+            "RequiredColor": 0,
+            "Target": 1,
+            "Power": 10
+          },
+          {
+            "$type": "ProtoAbilityData, Assembly-CSharp",
+            "Name": "Heal",
+            "Desc": "Heal 10 health.",
+            "Cost": 3,
+            "RequiredColor": 1,
+            "Target": 1,
+            "Power": 10
+          },
+          {
+            "$type": "ProtoAbilityData, Assembly-CSharp",
+            "Name": "Holy Fire",
+            "Desc": "Deal 25 damage.",
+            "Cost": 4,
+            "RequiredColor": 2,
+            "Target": 1,
+            "Power": 25
+          },
+          {
+            "$type": "ProtoAbilityData, Assembly-CSharp",
+            "Name": "Heavy Attack",
+            "Desc": "Deal 20 damage.",
+            "Cost": 3,
+            "RequiredColor": 3,
+            "Target": 1,
+            "Power": 20
+          }
+        ]
+      }
+    },
+    {
+      "$type": "ProtoCharacterData, Assembly-CSharp",
+      "Name": "Goblin",
+      "HP": 100,
+      "Abilities": {
+        "$type": "System.Collections.Generic.List`1[[ProtoAbilityData, Assembly-CSharp]], mscorlib",
+        "$values": [
+          {
+            "$type": "ProtoAbilityData, Assembly-CSharp",
+            "Name": "Attack",
+            "Desc": "Deal 15 damage.",
+            "Cost": 3,
+            "RequiredColor": 0,
+            "Target": 1,
+            "Power": 15
+          },
+          {
+            "$type": "ProtoAbilityData, Assembly-CSharp",
+            "Name": "Attack",
+            "Desc": "Deal 10 damage.",
+            "Cost": 3,
+            "RequiredColor": 1,
+            "Target": 1,
+            "Power": 10
+          },
+          {
+            "$type": "ProtoAbilityData, Assembly-CSharp",
+            "Name": "Attack",
+            "Desc": "Deal 20 damage.",
+            "Cost": 3,
+            "RequiredColor": 2,
+            "Target": 1,
+            "Power": 20
+          },
+          {
+            "$type": "ProtoAbilityData, Assembly-CSharp",
+            "Name": "Attack",
+            "Desc": "Deal 25 damage.",
+            "Cost": 3,
+            "RequiredColor": 3,
+            "Target": 1,
+            "Power": 25
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+<Constants>
+	<Constant Name="AbilityCost_No" Type="Float" Value=".3"> </Constant>
+  <Constant Name="AbilityCost_Yes" Type="Float" Value="1"> </Constant>
+
+  <Constant Name="Moves_Turn_1" Type="Int" Value="1"> </Constant>
+  <Constant Name="Moves_Turn_2" Type="Int" Value="2"> </Constant>
+  <Constant Name="Moves_Turn_3" Type="Int" Value="3"> </Constant>
+  <Constant Name="Moves_Turn_4" Type="Int" Value="4"> </Constant>
+  <Constant Name="TurnsPerRound" Type="Int" Value="4"> </Constant>
+
+  <!-- # of seconds AI waits in between moves, just so things aren't shocking to the player-->
+  <Constant Name="MonsterWaitTime" Type="Float" Value="1.5"> </Constant>
+</Constants>

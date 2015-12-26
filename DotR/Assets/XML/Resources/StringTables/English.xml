@@ -1,0 +1,7 @@
+<English>
+	<String ID="NUMBER_DELIMETER">,</String>
+
+  <String ID="TURN_TEXT">$NAME$ turn: $NUM$ tiles remaining</String>
+  <String ID="NAME_Player">Player</String>
+  <String ID="NAME_AI">AI</String>
+</English>
