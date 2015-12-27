@@ -18,13 +18,18 @@ public class GameBoard : Singleton<GameBoard> {
     }
 
     // character views for this prototype combat
-    public CharacterView PlayerView;
-    public CharacterView MonsterView;
+    public List<CharacterView> Characters;    
     public CharacterView GetViewFromType( CharacterTypes i_eType ) {
         if ( i_eType == CharacterTypes.Player )
-            return PlayerView;
+            return Characters[0] ;
         else
-            return MonsterView;
+            return Characters[1];
+    }
+
+    // data for characters currently being used
+    private List<ProtoCharacterData> m_listData = new List<ProtoCharacterData>();
+    public ProtoCharacterData GetDataFromType( CharacterTypes i_eType ) {
+        return m_listData[(int)i_eType-1];
     }
 
     // list of game pieces on the board
@@ -85,9 +90,11 @@ public class GameBoard : Singleton<GameBoard> {
     private void SetUpMessages(bool i_bSubscribe) {
         if (i_bSubscribe) {
             Messenger.AddListener<GamePiece>( "GamePiecePicked", OnGamePiecePicked );
+            Messenger.AddListener( "ResetBoard", SetUpBoard );
         }
         else {
             Messenger.RemoveListener<GamePiece>( "GamePiecePicked", OnGamePiecePicked );
+            Messenger.RemoveListener( "ResetBoard", SetUpBoard );
         }
     }
 
@@ -115,10 +122,16 @@ public class GameBoard : Singleton<GameBoard> {
     private void SetUpCharacters() {
         // set the player and monster views
         ProtoCharacterData charPlayer = IDL_ProtoCharacters.GetCharacter( "Cleric" );
-        PlayerView.Init( charPlayer );
+        CharacterView viewPlayer = GetViewFromType( CharacterTypes.Player );
+        viewPlayer.Init( charPlayer );
 
         ProtoCharacterData charMonster = IDL_ProtoCharacters.GetCharacter( "Goblin" );
-        MonsterView.Init( charMonster );
+        CharacterView viewMonster = GetViewFromType( CharacterTypes.AI );
+        viewMonster.Init( charMonster );
+
+        // add the data to our list
+        m_listData.Add( charPlayer );
+        m_listData.Add( charMonster );
     }
 
     //////////////////////////////////////////

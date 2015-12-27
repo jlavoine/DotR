@@ -40,9 +40,14 @@ public class GamePiece : MonoBehaviour {
     /// Sets the color of this game piece.
     //////////////////////////////////////////
     public void SetColor( AbilityColors i_eColor, Color i_color ) {
+        // set the color on the image for this element
         Button.GetComponent<Image>().color = i_color;
 
+        // save our color
         m_eColor = i_eColor;
+
+        // this is essentially an init, so make sure this piece is interactable
+        m_button.interactable = true;
     }
 
     //////////////////////////////////////////

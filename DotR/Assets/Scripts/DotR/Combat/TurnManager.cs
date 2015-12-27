@@ -15,6 +15,7 @@ public class TurnManager : Singleton<TurnManager> {
 
     // current character whose turn it is
     private CharacterTypes m_eActiveCharacter;
+    private ProtoCharacterData m_dataActiveCharacter;
     public CharacterTypes GetCurrentCharacter() {
         return m_eActiveCharacter;
     }
@@ -92,8 +93,9 @@ public class TurnManager : Singleton<TurnManager> {
             // if the non-starting character has taken the last turn in a round, increment round and reset the turn
             int nMaxTurns = Constants.GetConstant<int>( "TurnsPerRound" );
             if ( m_nTurn == nMaxTurns && m_eStartingCharacter != m_eActiveCharacter ) {
-                m_nRound++;
-                m_nTurn = 1;
+                m_nRound++;                             // new round!
+                m_nTurn = 1;                            // next round starts at turn 1
+                Messenger.Broadcast( "ResetBoard" );    // reset the game board
             }
             else if ( m_eStartingCharacter != m_eActiveCharacter ) {
                 // otherwise if the non-starting character took their turn, just increment the round
@@ -125,6 +127,7 @@ public class TurnManager : Singleton<TurnManager> {
 
         // set the active char
         m_eActiveCharacter = i_eType;
+        m_dataActiveCharacter = GameBoard.Instance.GetDataFromType( i_eType );
 
         // update the UI since the character changed
         UpdateUI();
@@ -142,8 +145,7 @@ public class TurnManager : Singleton<TurnManager> {
     //////////////////////////////////////////
     private void UpdateUI() {
         // get the name to display of whose turn it is
-        string strNameKey = "NAME_" + m_eActiveCharacter.ToString();
-        string strName = StringTableManager.Get( strNameKey );
+        string strName = m_dataActiveCharacter.Name;
 
         // format the help text with the current character's turn and # of moves left to make
         string strTurnText = StringTableManager.Get( "TURN_TEXT" );
