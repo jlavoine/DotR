@@ -13,4 +13,7 @@
 
   <!-- # of seconds between executed actions, just so things aren't shocking to the player-->
   <Constant Name="ActionWaitTime" Type="Float" Value="1"> </Constant>
+  
+  <!-- Combat theater-->
+  <Constant Name="Theater_MoveSpeed" Type="Float" Value="3"> </Constant>
 </Constants>
