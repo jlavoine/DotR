@@ -90,11 +90,11 @@ public class GameBoard : Singleton<GameBoard> {
     private void SetUpMessages(bool i_bSubscribe) {
         if (i_bSubscribe) {
             Messenger.AddListener<GamePiece>( "GamePiecePicked", OnGamePiecePicked );
-            Messenger.AddListener( "ResetBoard", SetUpBoard );
+            Messenger.AddListener( "RoundEnded", SetUpBoard );
         }
         else {
             Messenger.RemoveListener<GamePiece>( "GamePiecePicked", OnGamePiecePicked );
-            Messenger.RemoveListener( "ResetBoard", SetUpBoard );
+            Messenger.RemoveListener( "RoundEnded", SetUpBoard );
         }
     }
 
@@ -144,9 +144,8 @@ public class GameBoard : Singleton<GameBoard> {
         AbilityColors eResource = i_piece.GetColor();
 
         // grant a resource to whomever is the current player
-        CharacterTypes eType = TurnManager.Instance.GetCurrentCharacter();
-        CharacterView viewCurrent = GetViewFromType( eType );
-        string strMessageKey = "GainResource_" + viewCurrent.GetID();
+        ProtoCharacterData dataChar = TurnManager.Instance.GetCurrentCharacter();
+        string strMessageKey = "GainResource_" + dataChar.Name;
         Messenger.Broadcast<AbilityColors>( strMessageKey, eResource );
 
         // a valid move has been taken, so send out a message

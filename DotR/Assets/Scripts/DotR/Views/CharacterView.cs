@@ -11,7 +11,6 @@ using System.Collections.Generic;
 public class CharacterView : MonoBehaviour {
     // various labels set by this view
     private Text m_textName;
-    private Text m_textHP;
 
     // list of abilities this char has
     public List<AbilityView> m_listAbilities;
@@ -27,7 +26,6 @@ public class CharacterView : MonoBehaviour {
     //////////////////////////////////////////
     void Awake () {
         // cache some important objects
-        m_textHP = gameObject.FindInChildren("Health").GetComponent<Text>();
         m_textName = gameObject.FindInChildren("Name").GetComponent<Text>();
 
         // cache ability views
@@ -55,7 +53,6 @@ public class CharacterView : MonoBehaviour {
 
         // set labels
         m_textName.text = i_data.Name;
-        m_textHP.text = i_data.HP.ToString();
 
         // create ability views
         for (int i = 0; i < m_listAbilities.Count; ++i) {

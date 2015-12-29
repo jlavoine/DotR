@@ -40,7 +40,7 @@ public class MonsterAI : MonoBehaviour {
     /// the game board.
     //////////////////////////////////////////
     private void MakeMoves( int i_nMoves ) {
-        Debug.Log( "AI going to take " + i_nMoves );
+        //Debug.Log( "AI going to take " + i_nMoves );
         // kick off the coroutine version of this method
         StartCoroutine( MakeMoves_( i_nMoves ) );
     }

@@ -16,8 +16,8 @@ public class TurnManager : Singleton<TurnManager> {
     // current character whose turn it is
     private CharacterTypes m_eActiveCharacter;
     private ProtoCharacterData m_dataActiveCharacter;
-    public CharacterTypes GetCurrentCharacter() {
-        return m_eActiveCharacter;
+    public ProtoCharacterData GetCurrentCharacter() {
+        return m_dataActiveCharacter;
     }
 
     // current round and turn variables
@@ -95,7 +95,7 @@ public class TurnManager : Singleton<TurnManager> {
             if ( m_nTurn == nMaxTurns && m_eStartingCharacter != m_eActiveCharacter ) {
                 m_nRound++;                             // new round!
                 m_nTurn = 1;                            // next round starts at turn 1
-                Messenger.Broadcast( "ResetBoard" );    // reset the game board
+                Messenger.Broadcast( "RoundEnded" );    // send out a message that a round has ended
             }
             else if ( m_eStartingCharacter != m_eActiveCharacter ) {
                 // otherwise if the non-starting character took their turn, just increment the round

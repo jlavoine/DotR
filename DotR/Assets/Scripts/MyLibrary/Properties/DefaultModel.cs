@@ -1,0 +1,9 @@
+﻿using UnityEngine;
+using System.Collections;
+
+//////////////////////////////////////////
+/// DefaultModel
+//////////////////////////////////////////
+
+public class DefaultModel : PropertySet {
+}

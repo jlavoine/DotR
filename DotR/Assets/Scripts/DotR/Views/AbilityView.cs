@@ -88,8 +88,11 @@ public class AbilityView : MonoBehaviour {
             return;
         }
 
-        // for now, just return the cost to 0...
+        // reset the cost to 0
         m_nCurrentValue = 0;
+
+        // queue the action
+        Messenger.Broadcast<ProtoAbilityData>( "QueueAction", m_dataAbility );
 
         // update the UI
         UpdateResourceImages();

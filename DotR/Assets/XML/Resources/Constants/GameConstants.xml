@@ -10,4 +10,7 @@
 
   <!-- # of seconds AI waits in between moves, just so things aren't shocking to the player-->
   <Constant Name="MonsterWaitTime" Type="Float" Value="1.5"> </Constant>
+
+  <!-- # of seconds between executed actions, just so things aren't shocking to the player-->
+  <Constant Name="ActionWaitTime" Type="Float" Value="1"> </Constant>
 </Constants>

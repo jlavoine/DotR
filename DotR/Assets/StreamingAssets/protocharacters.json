@@ -15,7 +15,7 @@
             "Cost": 2,
             "RequiredColor": 0,
             "Target": 1,
-            "Power": 10
+            "Power": -10
           },
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
@@ -24,7 +24,7 @@
             "Cost": 3,
             "RequiredColor": 1,
             "Target": 1,
-            "Power": 10
+            "Power": -10
           },
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
@@ -33,7 +33,7 @@
             "Cost": 4,
             "RequiredColor": 2,
             "Target": 1,
-            "Power": 25
+            "Power": -25
           },
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
@@ -42,7 +42,7 @@
             "Cost": 3,
             "RequiredColor": 3,
             "Target": 1,
-            "Power": 20
+            "Power": -20
           }
         ]
       }
@@ -61,7 +61,7 @@
             "Cost": 3,
             "RequiredColor": 0,
             "Target": 1,
-            "Power": 15
+            "Power": -15
           },
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
@@ -70,7 +70,7 @@
             "Cost": 3,
             "RequiredColor": 1,
             "Target": 1,
-            "Power": 10
+            "Power": -10
           },
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
@@ -79,7 +79,7 @@
             "Cost": 3,
             "RequiredColor": 2,
             "Target": 1,
-            "Power": 20
+            "Power": -20
           },
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
@@ -88,7 +88,7 @@
             "Cost": 3,
             "RequiredColor": 3,
             "Target": 1,
-            "Power": 25
+            "Power": -25
           }
         ]
       }
