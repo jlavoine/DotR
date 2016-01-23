@@ -30,7 +30,7 @@ public static class IDL_ProtoCharacters {
     }
 
     private static void LoadCharacters() {
-        string strData = DataUtils.LoadFile("protocharacters");
+        string strData = DataUtils.LoadFile("protocharacters.json");
 
         m_listCharacters = JsonConvert.DeserializeObject<List<ProtoCharacterData>>(strData);
 

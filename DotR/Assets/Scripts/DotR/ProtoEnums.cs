@@ -24,3 +24,14 @@ public enum TheaterCombatStates {
     ToCombat,
     FromCombat
 }
+
+public enum EffectCategories {
+    Blessing,
+    Positive,
+    Negative
+}
+
+public enum ModificationTypes {
+    Flat,
+    Percentage
+}
