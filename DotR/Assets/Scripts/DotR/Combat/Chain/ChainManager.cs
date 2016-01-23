@@ -58,7 +58,7 @@ public class ChainManager : Singleton<ChainManager> {
         if ( IsChainStarted() == false )
             return;
 
-        Debug.Log( "Resetting chain!" );
+        //Debug.Log( "Resetting chain!" );
         m_listCurrentChain = new List<GamePiece_Chain>();
 
         Messenger.Broadcast( "ResetChain" );
@@ -104,11 +104,11 @@ public class ChainManager : Singleton<ChainManager> {
     /// the chain.
     //////////////////////////////////////////
     private void VerifyChain() {
-        string strMessage = "Verifying the following chain: ";        
+        /*string strMessage = "Verifying the following chain: ";        
         for ( int i = 0; i < m_listCurrentChain.Count; ++i ) {
             strMessage += m_listCurrentChain[i].GetColor().ToString() + " ";
         }
-        Debug.Log( strMessage );
+        Debug.Log( strMessage );*/
 
         CharacterModel modelPlayer = ModelManager.Instance.GetModel( "Cleric" );
         bool bVerified = modelPlayer.VerifyChain( m_listCurrentChain );

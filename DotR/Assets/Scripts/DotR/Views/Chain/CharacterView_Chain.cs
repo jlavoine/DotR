@@ -9,6 +9,12 @@ using System.Collections.Generic;
 //////////////////////////////////////////
 
 public class CharacterView_Chain : CharacterView {
+    // content that holds abilities
+    public GameObject AbilityContent;
+
+    // ability view prefab
+    public GameObject AbilityPrefab;
+
     //////////////////////////////////////////
     /// Init()
     /// Inits this UI with the incoming
@@ -18,8 +24,14 @@ public class CharacterView_Chain : CharacterView {
         base.Init( i_data );
 
         // create ability views
-        for ( int i = 0; i < AbilityViews.Count; ++i ) {
-            AbilityViews[i].Init( i_data.Abilities[i] );
+        for ( int i = 0; i < i_data.Abilities.Count; ++i ) {
+            // add the view object
+            GameObject goView = Instantiate<GameObject>( AbilityPrefab );
+            goView.transform.SetParent( AbilityContent.transform );
+
+            // init the view
+            AbilityView_Chain view = goView.GetComponent<AbilityView_Chain>();
+            view.Init( i_data.Abilities[i] );
         }
     }
 

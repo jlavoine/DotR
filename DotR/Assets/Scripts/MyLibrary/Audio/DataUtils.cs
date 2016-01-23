@@ -39,7 +39,6 @@ public static class DataUtils {
 
         // get all the files in the incoming directory
         string strPath = Application.streamingAssetsPath + "/" + i_strFolder + "/";
-        Debug.Log( "Looking for files in " + strPath );
         DirectoryInfo infoDirectory = new DirectoryInfo( strPath );
         FileInfo[] infoFiles = infoDirectory.GetFiles();
 

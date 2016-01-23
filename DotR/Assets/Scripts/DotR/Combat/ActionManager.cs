@@ -72,7 +72,7 @@ public class ActionManager : MonoBehaviour {
         QueuedAction action = new QueuedAction( i_dataCharacter, i_dataAbility );
         m_queueActions.Enqueue( action );
 
-        Debug.Log( i_dataCharacter.Name + " is queuing " + i_dataAbility.Name );
+       // Debug.Log( i_dataCharacter.Name + " is queuing " + i_dataAbility.Name );
     }
 
     //////////////////////////////////////////
@@ -81,7 +81,7 @@ public class ActionManager : MonoBehaviour {
     /// each action.
     //////////////////////////////////////////
     private void ExecuteActions() {
-        Debug.Log( "Executing actions!" );
+        //Debug.Log( "Executing actions!" );
         //StartCoroutine( ExecuteActions_() );
 
         while ( m_queueActions.Count > 0 ) {
@@ -115,7 +115,7 @@ public class ActionManager : MonoBehaviour {
         // get the target the action affects
         CharacterModel modelTarget = GetTargetModel( i_action );
 
-        Debug.Log( "Processing " + i_action.GetData().Name + " on " + modelTarget.Name );
+        //Debug.Log( "Processing " + i_action.GetData().Name + " on " + modelTarget.Name );
 
         // for now, we're just altering the hp of the target
         modelTarget.AlterHP( i_action.GetData().Power );
