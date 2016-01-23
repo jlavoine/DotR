@@ -21,8 +21,9 @@ public static class IDL_ProtoCharacters {
             LoadCharacters();
 
         foreach (ProtoCharacterData charData in m_listCharacters) {
-            if (charData.Name == i_strName)
+            if ( charData.Name == i_strName ) {
                 return charData;
+            }
         }
 
         return null;

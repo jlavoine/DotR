@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 
 //////////////////////////////////////////
-/// GameBoard
+/// Gameboard_Draft
 /// Going to try and make this a base 
 /// class for all game boards.
 //////////////////////////////////////////
 
-public class GameBoard : Singleton<GameBoard> {
+public class GameBoard_Chain : Singleton<GameBoard_Chain> {
     // list of colors game pieces can be
     public List<Color> PieceColors;
     public List<AbilityColors> ValidColors;
@@ -18,10 +18,10 @@ public class GameBoard : Singleton<GameBoard> {
     }
 
     // character views for this prototype combat
-    public List<CharacterView> Characters;    
+    public List<CharacterView> Characters;
     public CharacterView GetViewFromType( CharacterTypes i_eType ) {
         if ( i_eType == CharacterTypes.Player )
-            return Characters[0] ;
+            return Characters[0];
         else
             return Characters[1];
     }
@@ -29,24 +29,24 @@ public class GameBoard : Singleton<GameBoard> {
     // data for characters currently being used
     private List<ProtoCharacterData> m_listData = new List<ProtoCharacterData>();
     public ProtoCharacterData GetDataFromType( CharacterTypes i_eType ) {
-        return m_listData[(int)i_eType-1];
+        return m_listData[(int) i_eType - 1];
     }
 
     // list of game pieces on the board
-    private List<GamePiece> m_listPieces;
-    public List<GamePiece> GamePieces {
+    private List<GamePiece_Draft> m_listPieces;
+    public List<GamePiece_Draft> GamePieces {
         get {
             if ( m_listPieces == null ) {
-                GamePiece[] arrayPieces = gameObject.GetComponentsInChildren<GamePiece>();
-                m_listPieces = new List<GamePiece>( arrayPieces );
+                GamePiece_Draft[] arrayPieces = gameObject.GetComponentsInChildren<GamePiece_Draft>();
+                m_listPieces = new List<GamePiece_Draft>( arrayPieces );
             }
 
             return m_listPieces;
         }
     }
-    public List<GamePiece> GetAvailablePieces() {
-        List<GamePiece> listAvailablePieces = new List<GamePiece>();
-        foreach ( GamePiece piece in GamePieces ) {
+    public List<GamePiece_Draft> GetAvailablePieces() {
+        List<GamePiece_Draft> listAvailablePieces = new List<GamePiece_Draft>();
+        foreach ( GamePiece_Draft piece in GamePieces ) {
             if ( piece.IsAvailable() )
                 listAvailablePieces.Add( piece );
         }
@@ -60,15 +60,15 @@ public class GameBoard : Singleton<GameBoard> {
     void Awake() {
         // create the game board
         SetUpBoard();
-
-        // set up the characters
-        SetUpCharacters();
     }
 
     //////////////////////////////////////////
     /// Start()
     //////////////////////////////////////////
     void Start() {
+        // set up the characters
+        SetUpCharacters();
+
         // listen for messages
         SetUpMessages( true );
 
@@ -87,14 +87,14 @@ public class GameBoard : Singleton<GameBoard> {
     /// SetUpMessages()
     /// Subscribes or unsubscribes from messages.
     //////////////////////////////////////////
-    private void SetUpMessages(bool i_bSubscribe) {
-        if (i_bSubscribe) {
-            Messenger.AddListener<GamePiece>( "GamePiecePicked", OnGamePiecePicked );
-            Messenger.AddListener( "RoundEnded", SetUpBoard );
+    private void SetUpMessages( bool i_bSubscribe ) {
+        if ( i_bSubscribe ) {
+            Messenger.AddListener<GamePiece_Draft>( "GamePiecePicked", OnGamePiecePicked );
+            //Messenger.AddListener( "RoundEnded", SetUpBoard );
         }
         else {
-            Messenger.RemoveListener<GamePiece>( "GamePiecePicked", OnGamePiecePicked );
-            Messenger.RemoveListener( "RoundEnded", SetUpBoard );
+            Messenger.RemoveListener<GamePiece_Draft>( "GamePiecePicked", OnGamePiecePicked );
+            //Messenger.RemoveListener( "RoundEnded", SetUpBoard );
         }
     }
 
@@ -132,6 +132,9 @@ public class GameBoard : Singleton<GameBoard> {
         // add the data to our list
         m_listData.Add( charPlayer );
         m_listData.Add( charMonster );
+
+        // let the game know characters have been set up
+        Messenger.Broadcast( "CharactersSetUp" );
     }
 
     //////////////////////////////////////////
@@ -139,7 +142,7 @@ public class GameBoard : Singleton<GameBoard> {
     /// Callback for when a player choses a
     /// game piece on the board.
     //////////////////////////////////////////
-    private void OnGamePiecePicked( GamePiece i_piece ) {
+    private void OnGamePiecePicked( GamePiece_Draft i_piece ) {
         // what resource did this game piece represent?
         AbilityColors eResource = i_piece.GetColor();
 
@@ -150,5 +153,21 @@ public class GameBoard : Singleton<GameBoard> {
 
         // a valid move has been taken, so send out a message
         Messenger.Broadcast( "MoveMade" );
+    }
+
+    //////////////////////////////////////////
+    /// GetNextColor()
+    /// Based on the incoming color, returns the
+    /// next color in the cycle.
+    //////////////////////////////////////////
+    public AbilityColors GetNextColor( AbilityColors i_eColor ) {
+        if ( i_eColor == AbilityColors.Red )
+            return AbilityColors.Black;
+        else if ( i_eColor == AbilityColors.Black )
+            return AbilityColors.Blue;
+        else if ( i_eColor == AbilityColors.Blue )
+            return AbilityColors.Yellow;
+        else // yellow
+            return AbilityColors.Red;
     }
 }

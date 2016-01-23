@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 //////////////////////////////////////////
-/// MonsterAI
+/// MonsterAI_Draft
 /// Rudimentary AI script for prototype.
 //////////////////////////////////////////
 
-public class MonsterAI : MonoBehaviour {
+public class MonsterAI_Draft : MonoBehaviour {
 
     //////////////////////////////////////////
     /// Awake()
@@ -52,9 +52,9 @@ public class MonsterAI : MonoBehaviour {
         yield return new WaitForSeconds( fWait );
 
         // for now, just pick randomly from amongst available pieces
-        List<GamePiece> listAvailablePieces = GameBoard.Instance.GetAvailablePieces();
-        List<GamePiece> listPickedPieces = ListUtils.GetRandomElements<GamePiece>( listAvailablePieces, i_nMoves );
-        foreach ( GamePiece piece in listPickedPieces ) {
+        List<GamePiece_Draft> listAvailablePieces = Gameboard_Draft.Instance.GetAvailablePieces();
+        List<GamePiece_Draft> listPickedPieces = ListUtils.GetRandomElements<GamePiece_Draft>( listAvailablePieces, i_nMoves );
+        foreach ( GamePiece_Draft piece in listPickedPieces ) {
             // pick a piece
             piece.PickPice();
 

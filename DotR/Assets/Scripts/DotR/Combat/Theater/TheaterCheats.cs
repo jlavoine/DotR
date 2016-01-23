@@ -9,5 +9,9 @@ public class TheaterCheats : MonoBehaviour {
             Debug.Log( "InitCombat" );
             Messenger.Broadcast( "InitCombat" );
         }
+        else if ( Input.GetKeyDown( KeyCode.Alpha2 ) ) {
+            Debug.Log( "ReturnToStart" );
+            Messenger.Broadcast( "ReturnToStart" );
+        }
 	}
 }

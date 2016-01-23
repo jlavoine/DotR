@@ -127,7 +127,7 @@ public class TurnManager : Singleton<TurnManager> {
 
         // set the active char
         m_eActiveCharacter = i_eType;
-        m_dataActiveCharacter = GameBoard.Instance.GetDataFromType( i_eType );
+        m_dataActiveCharacter = Gameboard_Draft.Instance.GetDataFromType( i_eType );
 
         // update the UI since the character changed
         UpdateUI();

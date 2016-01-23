@@ -18,3 +18,9 @@ public enum CharacterTypes {
     Player,
     AI
 }
+
+public enum TheaterCombatStates {
+    Idle,
+    ToCombat,
+    FromCombat
+}

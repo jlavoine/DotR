@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 //////////////////////////////////////////
 /// ActionManager
-/// Handles the queing and firing of
+/// Handles the queuing and firing of
 /// combat actions.
 //////////////////////////////////////////
 
@@ -38,10 +38,12 @@ public class ActionManager : MonoBehaviour {
     private void ListenForMessages( bool i_bSubscribe ) {
         if ( i_bSubscribe ) {
             Messenger.AddListener<ProtoAbilityData>( "QueueAction", QueueAction );
+            Messenger.AddListener<ProtoAbilityData, ProtoCharacterData>( "QueueActionWithCharacter", QueueActionWithCharacter );
             Messenger.AddListener( "RoundEnded", ExecuteActions );
         }
         else {
             Messenger.RemoveListener<ProtoAbilityData>( "QueueAction", QueueAction );
+            Messenger.RemoveListener<ProtoAbilityData, ProtoCharacterData>( "QueueActionWithCharacter", QueueActionWithCharacter );
             Messenger.RemoveListener( "RoundEnded", ExecuteActions );
         }
     }
@@ -63,11 +65,14 @@ public class ActionManager : MonoBehaviour {
         // char whose turn it is
         ProtoCharacterData charCurrent = TurnManager.Instance.GetCurrentCharacter();
 
+        QueueActionWithCharacter( i_dataAbility, charCurrent );
+    }
+    private void QueueActionWithCharacter( ProtoAbilityData i_dataAbility, ProtoCharacterData i_dataCharacter ) {
         // create the queued action and add it to our queue
-        QueuedAction action = new QueuedAction( charCurrent, i_dataAbility );
+        QueuedAction action = new QueuedAction( i_dataCharacter, i_dataAbility );
         m_queueActions.Enqueue( action );
 
-        Debug.Log( charCurrent.Name + " is queing " + i_dataAbility.Name );
+        Debug.Log( i_dataCharacter.Name + " is queuing " + i_dataAbility.Name );
     }
 
     //////////////////////////////////////////
@@ -77,7 +82,14 @@ public class ActionManager : MonoBehaviour {
     //////////////////////////////////////////
     private void ExecuteActions() {
         Debug.Log( "Executing actions!" );
-        StartCoroutine( ExecuteActions_() );
+        //StartCoroutine( ExecuteActions_() );
+
+        while ( m_queueActions.Count > 0 ) {
+            QueuedAction action = m_queueActions.Dequeue();
+
+            // process the action -- first get the character who it will affect
+            ProcessAction( action );
+        }
     }
     private IEnumerator ExecuteActions_() {
         // how much time to wait between actions?

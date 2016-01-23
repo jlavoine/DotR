@@ -14,6 +14,12 @@
             "Desc": "Deal 10 damage.",
             "Cost": 2,
             "RequiredColor": 0,
+            "RequiredColors": {
+              "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                1
+              ]
+            },
             "Target": 1,
             "Power": -10
           },
@@ -23,8 +29,15 @@
             "Desc": "Heal 10 health.",
             "Cost": 3,
             "RequiredColor": 1,
-            "Target": 1,
-            "Power": -10
+            "RequiredColors": {
+              "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                2,
+                2
+              ]
+            },
+            "Target": 0,
+            "Power": 10
           },
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
@@ -32,6 +45,14 @@
             "Desc": "Deal 25 damage.",
             "Cost": 4,
             "RequiredColor": 2,
+            "RequiredColors": {
+              "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                0,
+                3,
+                3
+              ]
+            },
             "Target": 1,
             "Power": -25
           },
@@ -41,6 +62,14 @@
             "Desc": "Deal 20 damage.",
             "Cost": 3,
             "RequiredColor": 3,
+            "RequiredColors": {
+              "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                1,
+                1,
+                0
+              ]
+            },
             "Target": 1,
             "Power": -20
           }
@@ -74,7 +103,16 @@
           },
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
-            "Name": "Attack",
+            "Name": "Heavy Attack",
+            "Desc": "Deal 30 damage.",
+            "Cost": 3,
+            "RequiredColor": 1,
+            "Target": 1,
+            "Power": -10
+          },
+          {
+            "$type": "ProtoAbilityData, Assembly-CSharp",
+            "Name": "Medium Attack",
             "Desc": "Deal 20 damage.",
             "Cost": 3,
             "RequiredColor": 2,
@@ -83,8 +121,8 @@
           },
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
-            "Name": "Attack",
-            "Desc": "Deal 25 damage.",
+            "Name": "Heavy Attack",
+            "Desc": "Medium Deal 30 damage.",
             "Cost": 3,
             "RequiredColor": 3,
             "Target": 1,

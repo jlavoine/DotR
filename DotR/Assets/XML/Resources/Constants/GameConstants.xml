@@ -16,4 +16,7 @@
   
   <!-- Combat theater-->
   <Constant Name="Theater_MoveSpeed" Type="Float" Value="3"> </Constant>
+  
+  <!-- Chaining Prototype -->
+  <Constant Name="ChainedAlpha" Type="Float" Value=".07"> </Constant>
 </Constants>

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 
 //////////////////////////////////////////
 /// ProtoAbilityData
@@ -18,6 +18,9 @@ public class ProtoAbilityData
 
     // color the ability requires
     public AbilityColors RequiredColor;
+
+    // required colors for the chain version
+    public List<AbilityColors> RequiredColors;
 
     // target of the ability
     public CombatTargets Target;
