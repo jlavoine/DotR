@@ -57,11 +57,10 @@ public class CharacterModel : DefaultModel {
     /// turn is over.
     //////////////////////////////////////////
     private void OnTurnOver() {
-        // process any hp ticking
+        // process any hp ticking by getting the total amount hp should change...
         int nHpTick = GetTotalModification( "HpTick" );
 
-        Debug.Log( "Total hp tick: " + nHpTick );
-
+        // then just alter hp by it
         AlterHP( nHpTick );
     }
 
@@ -198,6 +197,50 @@ public class CharacterModel : DefaultModel {
             SetProperty( "Effects", dictEffects );
         }
 
-        Debug.Log( "Applying effect " + i_effectApplied.EffectID );
+        //Debug.Log( "Applying effect " + i_effectApplied.EffectID );
     }
+
+    //////////////////////////////////////////
+    /// RemoveEffect()
+    /// Remove incoming effect on this model,
+    /// if it exists.
+    //////////////////////////////////////////
+    public void RemoveEffect( RemovedEffectData i_removalData ) {
+        // first get all effects on this model
+        List<Effect> listEffects = GetAllEffects();
+
+        // this new dictionary will contain the non-removed effects
+        Dictionary<string, Effect> dictNewEffects = new Dictionary<string, Effect>();
+
+        // loop through each effect and see if it should be removed...
+        // if it shouldn't, add it to the new list
+        foreach ( Effect effect in listEffects ) {
+            bool bShouldRemove = effect.ShouldRemove( i_removalData );
+            if ( bShouldRemove == false )
+                dictNewEffects.Add( effect.GetID(), effect );
+            else {
+                //Debug.Log( "Effect Removed: " + effect.GetID() );
+            }
+        }
+
+        // set our current effects to the new list, which will have the removed effects eliminated from it
+        SetProperty( "Effects", dictNewEffects );
+    }
+
+    //////////////////////////////////////////
+    /// SetEffects()
+    /// This is essentially a helper method
+    /// for setting a list of effects on the
+    /// model, because it normally takes a
+    /// dictionary.
+    //////////////////////////////////////////
+    /*private void SetEffects( List<Effect> i_listEffects ) {
+        Dictionary<string, Effect> dictEffects = new Dictionary<string, Effect>();
+
+        // loop through the effects and add them to the dictionary
+        foreach ( Effect effect in i_listEffects )
+
+        // set the effects
+        SetProperty( "Effects", dictEffects );
+    }*/
 }

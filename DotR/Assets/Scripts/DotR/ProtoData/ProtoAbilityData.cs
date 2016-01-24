@@ -31,8 +31,12 @@ public class ProtoAbilityData
     // effects to be applied (if any)
     public List<AppliedEffectData> AppliedEffects;
 
+    // effects to be removed (if any)
+    public List<RemovedEffectData> RemovedEffects;
+
     public ProtoAbilityData() {
-        // since applied effects are optional, let's make sure the list is not null
+        // since these are optional, let's make sure these variables are instantiated
         AppliedEffects = new List<AppliedEffectData>();
+        RemovedEffects = new List<RemovedEffectData>();
     }
 }

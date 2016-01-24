@@ -9,6 +9,9 @@
 public class Effect  {
     // data that this effect points to
     private EffectData m_data;
+    public string GetID() {
+        return m_data.ID;
+    }
 
     // # of turns this effect will remain
     private int m_nRemainingTurns = 0;
@@ -47,5 +50,26 @@ public class Effect  {
     public int GetModification( string i_strKey ) {
         int nMod = m_data.GetModification( i_strKey );
         return nMod;
+    }
+
+    //////////////////////////////////////////
+    /// ShouldRemove()
+    /// Given the incoming removal data, will
+    /// return if this effect should be 
+    /// removed.
+    //////////////////////////////////////////
+    public bool ShouldRemove( RemovedEffectData i_removalData ) {
+        // if the removal data has an effect ID that matches this effect's ID, it should be removed
+        if ( i_removalData.EffectID == m_data.ID )
+            return true;
+
+        // next, if the removal effect removes by category, see if there are any matching categories
+        foreach ( EffectCategories category in i_removalData.Categories ) {
+            if ( m_data.Categories.Contains( category ) )
+                return true;
+        }
+
+        // the effect should not be removed if we got to here
+        return false;
     }
 }

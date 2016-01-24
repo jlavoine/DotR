@@ -74,6 +74,17 @@ public static class ListUtils {
 			list[k] = list[n];  
 			list[n] = value;  
 		}  
-	}	
-	
+	}
+
+    ///////////////////////////////////////////
+    /// ShallowCOpy()
+    /// Shallow copies the incoming list.
+    ///////////////////////////////////////////	
+    public static List<T> ShallowCopy<T>( this IList<T> list ) {
+        List<T> listNew = new List<T>();
+        foreach ( T element in list )
+            listNew.Add( element );
+
+        return listNew;
+    }
 }

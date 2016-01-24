@@ -1,10 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
-
-//////////////////////////////////////////
+﻿//////////////////////////////////////////
 /// AppliedEffectData
-/// Data for an effect to be applied from
-/// an ability.
+/// Data for an effect to be applied.
 //////////////////////////////////////////
 
 public class AppliedEffectData {

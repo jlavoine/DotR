@@ -128,6 +128,15 @@ public class ActionManager : MonoBehaviour {
             // apply the effect!
             modelEffectTarget.ApplyEffect( effect );
         }
+
+        // handle remove effects, if any
+        foreach ( RemovedEffectData removal in i_action.GetData().RemovedEffects ) {
+            // get the model the removal should apply to
+            CharacterModel modelEffectRemoval = GetTargetModel( removal.Target, i_action );
+
+            // remove the effect!
+            modelEffectRemoval.RemoveEffect( removal );
+        }
     }
 
     //////////////////////////////////////////
