@@ -150,6 +150,9 @@ public class ChainManager : Singleton<ChainManager> {
             // end the round now so the action is processed (HACK)
             Messenger.Broadcast( "RoundEnded" );
 
+            // one turn is all the player gets
+            Messenger.Broadcast( "TurnEnded" );
+
             // let the enemy take a turn! (HACK FOR NOW)
             Messenger.Broadcast( "MonsterTurn" );
         }

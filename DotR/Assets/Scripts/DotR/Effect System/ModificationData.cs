@@ -17,6 +17,11 @@ public class ModificationData {
     // the actual amount to modify by
     public float Amount;
 
+    //////////////////////////////////////////
+    /// GetExample()
+    /// Returns an example of this class, used
+    /// for validating json serialization.
+    //////////////////////////////////////////
     public static ModificationData GetExample() {
         ModificationData example = new ModificationData();
         example.Target = "Strength";

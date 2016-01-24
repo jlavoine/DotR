@@ -27,4 +27,12 @@ public class ProtoAbilityData
 
     // power of the ability
     public int Power;
+
+    // effects to be applied (if any)
+    public List<AppliedEffectData> AppliedEffects;
+
+    public ProtoAbilityData() {
+        // since applied effects are optional, let's make sure the list is not null
+        AppliedEffects = new List<AppliedEffectData>();
+    }
 }

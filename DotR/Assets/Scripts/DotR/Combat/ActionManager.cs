@@ -113,12 +113,21 @@ public class ActionManager : MonoBehaviour {
     //////////////////////////////////////////
     private void ProcessAction( QueuedAction i_action ) {
         // get the target the action affects
-        CharacterModel modelTarget = GetTargetModel( i_action );
+        CharacterModel modelTarget = GetTargetModel( i_action.GetData().Target, i_action );
 
         //Debug.Log( "Processing " + i_action.GetData().Name + " on " + modelTarget.Name );
 
         // for now, we're just altering the hp of the target
         modelTarget.AlterHP( i_action.GetData().Power );
+
+        // handle applied effects, if any
+        foreach ( AppliedEffectData effect in i_action.GetData().AppliedEffects ) {
+            // get the model the effect should apply to
+            CharacterModel modelEffectTarget = GetTargetModel( effect.Target, i_action );
+
+            // apply the effect!
+            modelEffectTarget.ApplyEffect( effect );
+        }
     }
 
     //////////////////////////////////////////
@@ -126,10 +135,10 @@ public class ActionManager : MonoBehaviour {
     /// Returns the character model that the
     /// incoming action targets.
     //////////////////////////////////////////
-    private CharacterModel GetTargetModel( QueuedAction i_action ) {
+    private CharacterModel GetTargetModel( CombatTargets i_eTarget, QueuedAction i_action ) {
         // let's just brute force this for now
         string strTargetID;
-        if ( i_action.GetData().Target == CombatTargets.Self ) {
+        if ( i_eTarget == CombatTargets.Self ) {
             // if the action target is self, use whoever owns the ID
             strTargetID = i_action.GetOwnerID();
         }

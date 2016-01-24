@@ -15,4 +15,7 @@ public class ProtoCharacterData {
 
     // list of character abilities
     public List<ProtoAbilityData> Abilities;
+
+    // type of character (player or AI) -- how this is set will probably change
+    public CharacterTypes CharacterType;
 }

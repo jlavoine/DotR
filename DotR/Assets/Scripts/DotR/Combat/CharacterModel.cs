@@ -25,6 +25,78 @@ public class CharacterModel : DefaultModel {
 
         // set various things
         SetProperty( "HP", m_data.HP );
+        SetProperty( "Effects", new Dictionary<string, Effect>() );
+
+        // listen for messages
+        ListenForMessages( true );
+    }
+
+    //////////////////////////////////////////
+    /// OnDestroy()
+    //////////////////////////////////////////
+    void OnDestroy() {
+        // stop listening for messages
+        ListenForMessages( false );
+    }
+
+    //////////////////////////////////////////
+    /// ListenForMessages()
+    //////////////////////////////////////////
+    private void ListenForMessages( bool i_bListen ) {
+        if ( i_bListen ) {
+            Messenger.AddListener( "TurnOver_" + m_data.Name, OnTurnOver );
+        }
+        else {
+            Messenger.AddListener( "TurnOver_" + m_data.Name, OnTurnOver );
+        }
+    }
+
+    //////////////////////////////////////////
+    /// OnTurnOver()
+    /// Callback for when this character's
+    /// turn is over.
+    //////////////////////////////////////////
+    private void OnTurnOver() {
+        // process any hp ticking
+        int nHpTick = GetTotalModification( "HpTick" );
+
+        Debug.Log( "Total hp tick: " + nHpTick );
+
+        AlterHP( nHpTick );
+    }
+
+    //////////////////////////////////////////
+    /// GetTotalModification()
+    /// Returns the total modification for the
+    /// incoming key for this character.
+    //////////////////////////////////////////
+    private int GetTotalModification( string i_strKey ) {
+        int nTotal = 0;
+
+        // go through all effects on this character and get any relevant modifications
+        List<Effect> listEffects = GetAllEffects();
+        foreach ( Effect effect in listEffects ) {
+            if ( effect.Modifies( i_strKey ) )
+                nTotal += effect.GetModification( i_strKey );
+        }
+
+        return nTotal;
+    }
+
+    //////////////////////////////////////////
+    /// GetAllEffects()
+    /// Returns all effects currently on
+    /// this character.
+    //////////////////////////////////////////
+    private List<Effect> GetAllEffects() {
+        List<Effect> listEffects = new List<Effect>();
+
+        // crummy, but get the dictionary of effects and turn it into a list
+        Dictionary<string, Effect> dictEffects = GetPropertyValue<Dictionary<string, Effect>>( "Effects" );
+        foreach ( KeyValuePair<string, Effect> pair in dictEffects )
+            listEffects.Add( pair.Value );
+
+        return listEffects;
     }
 
     //////////////////////////////////////////
@@ -107,5 +179,25 @@ public class CharacterModel : DefaultModel {
 
         // there was no such ability
         return null;
+    }
+
+    //////////////////////////////////////////
+    /// ApplyEffect()
+    /// Applies incoming effect on this model.
+    //////////////////////////////////////////
+    public void ApplyEffect( AppliedEffectData i_effectApplied ) {
+        // create a new effect from the data
+        Effect effect = new Effect( i_effectApplied );
+
+        // get the currently applied effects on this model
+        Dictionary<string, Effect> dictEffects = GetPropertyValue<Dictionary<string, Effect>>( "Effects" );
+
+        // only apply the effect if it's not already on the character (subject to change? ugh...it's a dictionary!)
+        if ( dictEffects.ContainsKey( i_effectApplied.EffectID ) == false ) {
+            dictEffects.Add( i_effectApplied.EffectID, effect );
+            SetProperty( "Effects", dictEffects );
+        }
+
+        Debug.Log( "Applying effect " + i_effectApplied.EffectID );
     }
 }

@@ -75,5 +75,8 @@ public class MonsterAI_Chain : MonoBehaviour {
 
         // end the round now so the action is processed by the action manager (HACK)
         Messenger.Broadcast( "RoundEnded" );
+
+        // one turn is all the player gets
+        Messenger.Broadcast( "TurnEnded" );
     }
 }
