@@ -62,6 +62,41 @@ public class CharacterModel : DefaultModel {
 
         // then just alter hp by it
         AlterHP( nHpTick );
+
+        // tick all effects so their duration goes down
+        TickEffects();
+    }
+
+    //////////////////////////////////////////
+    /// TickEffects()
+    /// Ticks the duration of each effect,
+    /// and removes any that have expired.
+    /// This code is kind of similar to the
+    /// RemoveEffect() code...
+    //////////////////////////////////////////
+    private void TickEffects() {
+        // first get all effects on this model
+        List<Effect> listEffects = GetAllEffects();
+
+        // this new dictionary will contain the non-removed effects
+        Dictionary<string, Effect> dictNewEffects = new Dictionary<string, Effect>();
+
+        // loop through each effect and tick it down a turn
+        foreach ( Effect effect in listEffects ) {
+            if ( effect.RemainingTurns > 0 )
+                effect.RemainingTurns -= 1;
+
+            // remove effects that have no remaining turns
+            bool bShouldRemove = effect.RemainingTurns == 0;
+            if ( bShouldRemove == false )
+                dictNewEffects.Add( effect.GetID(), effect );
+            else {
+                //Debug.Log( "Effect Removed: " + effect.GetID() );
+            }
+        }
+
+        // set our current effects to the new list, which will have the removed effects eliminated from it
+        SetProperty( "Effects", dictNewEffects );
     }
 
     //////////////////////////////////////////

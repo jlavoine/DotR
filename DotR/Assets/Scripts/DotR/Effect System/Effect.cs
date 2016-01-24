@@ -15,6 +15,14 @@ public class Effect  {
 
     // # of turns this effect will remain
     private int m_nRemainingTurns = 0;
+    public int RemainingTurns {
+        get {
+            return m_nRemainingTurns;
+        }
+        set {
+            m_nRemainingTurns = value;
+        }
+    }
 
     //////////////////////////////////////////
     /// Effect()
