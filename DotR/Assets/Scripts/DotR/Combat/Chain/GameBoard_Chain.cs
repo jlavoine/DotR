@@ -60,6 +60,15 @@ public class GameBoard_Chain : Singleton<GameBoard_Chain> {
     void Awake() {
         // create the game board
         SetUpBoard();
+
+        /*EffectData ex = EffectData.GetExample();
+        List<EffectData> listEx = new List<EffectData>();
+        listEx.Add( ex );
+        string json = SerializationUtils.Serialize( listEx );
+        Debug.Log( json );*/
+
+        //EffectData eff = IDL_Effects.GetData( "BLESSING_REGEN" );
+        //Debug.Log( "Hows this: " + eff.Name );
     }
 
     //////////////////////////////////////////
