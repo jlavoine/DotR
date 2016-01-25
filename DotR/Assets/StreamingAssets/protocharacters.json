@@ -26,7 +26,7 @@
               "$values": [
                 {
                   "$type": "AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                  "EffectID": "BLESSING_REGEN",
+                  "EffectID": "Blessing_Regen",
                   "Target": 0
                 }
               ]
@@ -54,7 +54,7 @@
                   "Categories": {
                     "$type": "System.Collections.Generic.List`1[[EffectCategories, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                     "$values": [
-                        2
+                        0
                     ]
                   },
                   "Target": 0

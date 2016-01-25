@@ -31,6 +31,11 @@ public enum EffectCategories {
     Negative
 }
 
+public enum BlessingStates {
+    On,
+    Off
+}
+
 public enum ModificationTypes {
     Flat,
     Percentage

@@ -1,0 +1,29 @@
+{
+  "$type": "System.Collections.Generic.List`1[[EffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+  "$values": [
+    {
+      "$type": "EffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Blessing of Arrun",
+      "Duration": -1,
+      "Categories": {
+        "$type": "System.Collections.Generic.List`1[[EffectCategories, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          0,
+          1
+        ]
+      },
+      "Modifications": {
+        "$type": "System.Collections.Generic.List`1[[ModificationData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          {
+            "$type": "ModificationData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Target": "HpTick",
+            "ModType": 0,
+            "Amount": 5.0
+          }
+        ]
+      },
+      "ID": "Blessing_Regen"
+    }
+  ]
+}

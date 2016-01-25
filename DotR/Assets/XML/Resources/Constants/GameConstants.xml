@@ -7,6 +7,10 @@
   <Constant Name="Moves_Turn_3" Type="Int" Value="3"> </Constant>
   <Constant Name="Moves_Turn_4" Type="Int" Value="4"> </Constant>
   <Constant Name="TurnsPerRound" Type="Int" Value="4"> </Constant>
+  
+  <!-- Blessing related -->
+  <Constant Name="BlessingAlpha_Off" Type="Float" Value=".37"> </Constant>
+  <Constant Name="BlessingAlpha_On" Type="Float" Value="1"> </Constant>
 
   <!-- # of seconds AI waits in between moves, just so things aren't shocking to the player-->
   <Constant Name="MonsterWaitTime" Type="Float" Value="1.5"> </Constant>

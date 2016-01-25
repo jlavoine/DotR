@@ -263,6 +263,20 @@ public class CharacterModel : DefaultModel {
     }
 
     //////////////////////////////////////////
+    /// HasEffect()
+    /// Returns whether or not the incoming
+    /// effect is present on this model.
+    //////////////////////////////////////////
+    public bool HasEffect( string i_strKey ) {
+        // get dictionary of effects
+        Dictionary<string, Effect> dictEffects = GetPropertyValue<Dictionary<string, Effect>>( "Effects" );
+
+        // is the key in the dictionary? simple
+        bool bHas = dictEffects.ContainsKey( i_strKey );
+        return bHas;
+    }
+
+    //////////////////////////////////////////
     /// SetEffects()
     /// This is essentially a helper method
     /// for setting a list of effects on the
