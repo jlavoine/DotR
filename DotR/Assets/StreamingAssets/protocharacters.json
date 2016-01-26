@@ -34,10 +34,31 @@
           },
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
-            "Name": "Attack",
-            "Desc": "Deal 10 damage.",
-            "Cost": 2,
-            "RequiredColor": 0,
+            "Name": "Blessing of Esh",
+            "Desc": "Bless yourself with Esh's power.",
+            "RequiredColors": {
+              "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                0
+              ]
+            },
+            "Target": 1,
+            "Power": 0,
+            "AppliedEffects": {
+              "$type": "System.Collections.Generic.List`1[[AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                {
+                  "$type": "AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "EffectID": "Blessing_AllDamage",
+                  "Target": 0
+                }
+              ]
+            }
+          },
+          {
+            "$type": "ProtoAbilityData, Assembly-CSharp",
+            "Name": "Blessing of Pokai",
+            "Desc": "Bless yourself with Pokai's power.",
             "RequiredColors": {
               "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "$values": [
@@ -45,23 +66,41 @@
               ]
             },
             "Target": 1,
-            "Power": -10,
-            "RemovedEffects": {
-              "$type": "System.Collections.Generic.List`1[[RemovedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Power": 0,
+            "AppliedEffects": {
+              "$type": "System.Collections.Generic.List`1[[AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "$values": [
                 {
-                  "$type": "RemovedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Categories": {
-                    "$type": "System.Collections.Generic.List`1[[EffectCategories, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                    "$values": [
-                        0
-                    ]
-                  },
+                  "$type": "AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "EffectID": "Blessing_PhyDef",
                   "Target": 0
                 }
               ]
             }
-          },
+          }, 
+          {
+            "$type": "ProtoAbilityData, Assembly-CSharp",
+            "Name": "Blessing of Mu",
+            "Desc": "Bless yourself with Mu's power.",
+            "RequiredColors": {
+              "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                3
+              ]
+            },
+            "Target": 1,
+            "Power": 0,
+            "AppliedEffects": {
+              "$type": "System.Collections.Generic.List`1[[AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                {
+                  "$type": "AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "EffectID": "Blessing_MagDef",
+                  "Target": 0
+                }
+              ]
+            }
+          },                   
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
             "Name": "Heal",

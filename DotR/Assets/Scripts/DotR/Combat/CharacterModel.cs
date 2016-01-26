@@ -104,7 +104,7 @@ public class CharacterModel : DefaultModel {
     /// Returns the total modification for the
     /// incoming key for this character.
     //////////////////////////////////////////
-    private int GetTotalModification( string i_strKey ) {
+    public int GetTotalModification( string i_strKey ) {
         int nTotal = 0;
 
         // go through all effects on this character and get any relevant modifications
@@ -274,6 +274,23 @@ public class CharacterModel : DefaultModel {
         // is the key in the dictionary? simple
         bool bHas = dictEffects.ContainsKey( i_strKey );
         return bHas;
+    }
+
+    //////////////////////////////////////////
+    /// GetEffect()
+    /// Returns the effect with the incoming
+    /// key on this character. May be null,
+    /// so check it or make sure the character
+    /// has it!
+    //////////////////////////////////////////
+    public Effect GetEffect( string i_strKey ) {
+        // get dictionary of effects
+        Dictionary<string, Effect> dictEffects = GetPropertyValue<Dictionary<string, Effect>>( "Effects" );
+
+        if ( dictEffects.ContainsKey( i_strKey ) )
+            return dictEffects[i_strKey];
+        else
+            return null;
     }
 
     //////////////////////////////////////////

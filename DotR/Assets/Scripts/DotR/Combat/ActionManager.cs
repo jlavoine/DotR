@@ -117,8 +117,13 @@ public class ActionManager : MonoBehaviour {
 
         //Debug.Log( "Processing " + i_action.GetData().Name + " on " + modelTarget.Name );
 
+        // check to see if any effects on the aggressor contribute to increased power
+        CharacterModel modelAggressor = ModelManager.Instance.GetModel( i_action.GetOwnerID() );
+        int nPowerBonus = modelAggressor.GetTotalModification( "AllDamage" );
+        int nDamage = i_action.GetData().Power + nPowerBonus;
+
         // for now, we're just altering the hp of the target
-        modelTarget.AlterHP( i_action.GetData().Power );
+        modelTarget.AlterHP( nDamage );
 
         // handle applied effects, if any
         foreach ( AppliedEffectData effect in i_action.GetData().AppliedEffects ) {

@@ -4,4 +4,9 @@
   <String ID="TURN_TEXT">$NAME$ turn: $NUM$ tiles remaining</String>
   <String ID="NAME_Player">Player</String>
   <String ID="NAME_AI">AI</String>
+
+  <String ID="STATE_On">ACTIVE</String>
+  <String ID="STATE_Off">NOT ACTIVE</String>
+
+  <String ID="BLESSING_TOOLTIP">&lt;b&gt;$STATE$&lt;/b&gt;\n$BODY$</String>
 </English>

@@ -4,6 +4,7 @@
     {
       "$type": "EffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Name": "Blessing of Arrun",
+      "CombatDesc": "While active, restore 5 HP each turn.",
       "Duration": -1,
       "Categories": {
         "$type": "System.Collections.Generic.List`1[[EffectCategories, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -24,6 +25,81 @@
         ]
       },
       "ID": "Blessing_Regen"
-    }
+    },
+    {
+      "$type": "EffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Blessing of Esh",
+      "CombatDesc": "While active, all attacks deal 5 extra damage.",
+      "Duration": -1,
+      "Categories": {
+        "$type": "System.Collections.Generic.List`1[[EffectCategories, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          0,
+          1
+        ]
+      },
+      "Modifications": {
+        "$type": "System.Collections.Generic.List`1[[ModificationData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          {
+            "$type": "ModificationData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Target": "AllDamage",
+            "ModType": 0,
+            "Amount": -5.0
+          }
+        ]
+      },
+      "ID": "Blessing_AllDamage"
+    },
+            {
+      "$type": "EffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Blessing of Pokai",
+      "CombatDesc": "While active, gain +5 physical defense.",
+      "Duration": -1,
+      "Categories": {
+        "$type": "System.Collections.Generic.List`1[[EffectCategories, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          0,
+          1
+        ]
+      },
+      "Modifications": {
+        "$type": "System.Collections.Generic.List`1[[ModificationData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          {
+            "$type": "ModificationData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Target": "PhyDef",
+            "ModType": 0,
+            "Amount": 5.0
+          }
+        ]
+      },
+      "ID": "Blessing_PhyDef"
+    },
+    {
+      "$type": "EffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Blessing of Mu",
+      "CombatDesc": "While active, gain +5 magical defense.",
+      "Duration": -1,
+      "Categories": {
+        "$type": "System.Collections.Generic.List`1[[EffectCategories, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          0,
+          1
+        ]
+      },
+      "Modifications": {
+        "$type": "System.Collections.Generic.List`1[[ModificationData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          {
+            "$type": "ModificationData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Target": "MagDef",
+            "ModType": 0,
+            "Amount": 5.0
+          }
+        ]
+      },
+      "ID": "Blessing_MagDef"
+    }    
   ]
 }

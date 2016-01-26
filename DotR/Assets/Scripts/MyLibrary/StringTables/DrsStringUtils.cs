@@ -23,6 +23,9 @@ public class DrsStringUtils {
 		string str = i_str;
 		string key = "$" + i_strKey + "$";	
 		string strResult = str.Replace(key, i_strVal);
+
+        // this is kind of a hack, but I want to replace all newlines because Unity doesn't do this...
+        strResult = strResult.Replace( "\\n", "\n" );
 		
 		return strResult;
 	}

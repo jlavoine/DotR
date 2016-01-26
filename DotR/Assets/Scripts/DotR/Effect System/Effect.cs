@@ -12,6 +12,9 @@ public class Effect  {
     public string GetID() {
         return m_data.ID;
     }
+    public EffectData GetData() {
+        return m_data;
+    }
 
     // # of turns this effect will remain
     private int m_nRemainingTurns = 0;

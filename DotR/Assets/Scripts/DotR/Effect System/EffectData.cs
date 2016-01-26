@@ -9,6 +9,9 @@ public class EffectData : GenericData  {
     // name of the effect
     public string Name;
 
+    // description of the effect in combat
+    public string CombatDesc;
+
     // duration of the effect: -1 is infinite, 0 is instant, positive integer for # of turns
     public int Duration;
 
@@ -16,7 +19,7 @@ public class EffectData : GenericData  {
     public List<EffectCategories> Categories;
 
     // list of modifications this effect bestows
-    public List<ModificationData> Modifications;
+    public List<ModificationData> Modifications;    
 
     public EffectData() {
         // just in case the modificaitons list is empty, init it
