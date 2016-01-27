@@ -28,6 +28,9 @@ public class ProtoAbilityData
     // power of the ability
     public int Power;
 
+    // damage types of the ability
+    public List<DamageTypes> DamageTypes;
+
     // effects to be applied (if any)
     public List<AppliedEffectData> AppliedEffects;
 
@@ -38,5 +41,6 @@ public class ProtoAbilityData
         // since these are optional, let's make sure these variables are instantiated
         AppliedEffects = new List<AppliedEffectData>();
         RemovedEffects = new List<RemovedEffectData>();
+        DamageTypes = new List<DamageTypes>();
     }
 }

@@ -68,7 +68,7 @@
         "$values": [
           {
             "$type": "ModificationData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-            "Target": "PhyDef",
+            "Target": "PhysicalDefense",
             "ModType": 0,
             "Amount": 5.0
           }
@@ -93,7 +93,7 @@
         "$values": [
           {
             "$type": "ModificationData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-            "Target": "MagDef",
+            "Target": "MagicalDefense",
             "ModType": 0,
             "Amount": 5.0
           }

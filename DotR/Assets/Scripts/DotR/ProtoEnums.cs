@@ -40,3 +40,8 @@ public enum ModificationTypes {
     Flat,
     Percentage
 }
+
+public enum DamageTypes {
+    Physical,
+    Magical
+}

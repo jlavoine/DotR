@@ -114,13 +114,28 @@ public class ActionManager : MonoBehaviour {
     private void ProcessAction( QueuedAction i_action ) {
         // get the target the action affects
         CharacterModel modelTarget = GetTargetModel( i_action.GetData().Target, i_action );
+        CharacterModel modelAggressor = ModelManager.Instance.GetModel( i_action.GetOwnerID() );
 
         //Debug.Log( "Processing " + i_action.GetData().Name + " on " + modelTarget.Name );
 
-        // check to see if any effects on the aggressor contribute to increased power
-        CharacterModel modelAggressor = ModelManager.Instance.GetModel( i_action.GetOwnerID() );
+        // check to see if any effects on the aggressor contribute to increased power        
         int nPowerBonus = modelAggressor.GetTotalModification( "AllDamage" );
         int nDamage = i_action.GetData().Power + nPowerBonus;
+
+        // now do defenses -- for now, just handle one
+        if ( i_action.GetData().DamageTypes.Count > 0 ) {
+            DamageTypes eDamageType = i_action.GetData().DamageTypes[0];
+            int nDefense = modelTarget.GetTotalModification( eDamageType.ToString() + "Defense" );
+
+            if ( nDamage > 0 ) {
+                // something is reducing the defense
+                nDamage = Mathf.Max( nDamage - nDefense, 0 );
+            }
+            else {
+                // something is augmenting the heal
+                nDamage = nDamage + nDefense;                   
+            }
+        }
 
         // for now, we're just altering the hp of the target
         modelTarget.AlterHP( nDamage );

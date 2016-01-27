@@ -168,6 +168,12 @@
             "Desc": "Deal 15 damage.",
             "Cost": 3,
             "RequiredColor": 0,
+            "DamageTypes": {
+              "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                0
+              ]
+            },            
             "Target": 1,
             "Power": -15
           },
@@ -177,6 +183,12 @@
             "Desc": "Deal 10 damage.",
             "Cost": 3,
             "RequiredColor": 1,
+            "DamageTypes": {
+              "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                1
+              ]
+            },            
             "Target": 1,
             "Power": -10
           },
