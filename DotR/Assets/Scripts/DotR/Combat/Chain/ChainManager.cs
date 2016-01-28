@@ -96,8 +96,15 @@ public class ChainManager : Singleton<ChainManager> {
     /// chain.
     //////////////////////////////////////////
     private void AddToChain( GamePiece i_piece ) {
-        // get the piece being added and put it on our list
         GamePiece_Chain piece = (GamePiece_Chain) i_piece;
+
+        // if the incoming piece is already in the chain (i.e. player back tracked) it's an auto failure
+        if ( m_listCurrentChain.Contains( piece ) ) {
+            ResetChain();
+            return;
+        }
+
+        // add piece to our list
         m_listCurrentChain.Add( piece );
         
         // let the piece know it's being chained
