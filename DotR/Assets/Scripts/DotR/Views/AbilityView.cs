@@ -23,7 +23,7 @@ public abstract class AbilityView : MonoBehaviour {
     public Text m_textDesc;
     protected Text Desc {
         get {
-            if ( m_textDesc == null )
+            if ( m_textDesc == null && gameObject.FindInChildren( "Desc" ) )
                 m_textDesc = gameObject.FindInChildren( "Desc" ).GetComponent<Text>();
 
             return m_textDesc;
@@ -53,6 +53,8 @@ public abstract class AbilityView : MonoBehaviour {
         
         // set labels
         Name.text = i_data.Name;
-        Desc.text = i_data.Desc;
+
+        if ( Desc )
+            Desc.text = i_data.Desc;
     }
 }

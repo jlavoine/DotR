@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
+using ModelShark;
 
 //////////////////////////////////////////
 /// AbilityView_Chain
@@ -17,6 +16,9 @@ public class AbilityView_Chain : AbilityView {
     //////////////////////////////////////////
     public override void Init( ProtoAbilityData i_data ) {
         base.Init( i_data );
+
+        // add this ability's description as a tooltip
+        AddTooltip( i_data );        
 
         // loop through all the required colors of an ability and set the tile to that color
         // this isn't exactly safe, but I'll make sure # of colors < # of tiles for now
@@ -40,25 +42,21 @@ public class AbilityView_Chain : AbilityView {
     }
 
     //////////////////////////////////////////
-    /// ActivateAbility()
-    /// Fires the ability off.
+    /// AddTooltip()
+    /// Adds a tooltip to this ability view
+    /// using the ability's description.
     //////////////////////////////////////////
-    private void ActivateAbility() {
-        /*
-        // safety check
-        if ( m_nCurrentValue != m_dataAbility.Cost ) {
-            Debug.LogError( "Ability illegally trying to fire: " + m_dataAbility.Name );
-            return;
-        }
+    private void AddTooltip( ProtoAbilityData i_data ) {
+        TooltipTrigger tooltipTrigger = gameObject.AddComponent<TooltipTrigger>();
+        TooltipStyle tooltipStyle = Resources.Load<TooltipStyle>( "CleanSimple" );
+        tooltipTrigger.tooltipStyle = tooltipStyle;
 
-        // reset the cost to 0
-        m_nCurrentValue = 0;
+        // Set the tooltip text.
+        tooltipTrigger.SetText( "BodyText", i_data.Desc );
 
-        // queue the action
-        Messenger.Broadcast<ProtoAbilityData>( "QueueAction", m_dataAbility );
-
-        // update the UI
-        UpdateResourceImages();
-        */
+        // Set some extra style properties on the tooltip
+        tooltipTrigger.maxTextWidth = 250;
+        tooltipTrigger.backgroundTint = Color.white;
+        tooltipTrigger.tipPosition = TipPosition.TopRightCorner;
     }
 }

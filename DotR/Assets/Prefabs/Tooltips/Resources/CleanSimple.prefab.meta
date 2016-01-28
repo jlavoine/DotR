@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 739efc2cf814b754e958ba25206bd627
+guid: 2d5960b0a25ac664087b49059d93917b
 labels:
 - Tooltip
 - Tooltips
@@ -10,7 +10,7 @@ labels:
 - Tip
 - Tutorial
 - Barks
-timeCreated: 1453944555
+timeCreated: 1453944539
 licenseType: Free
 NativeFormatImporter:
   userData: 
