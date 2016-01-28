@@ -1,5 +1,9 @@
 <Constants>
-	<Constant Name="AbilityCost_No" Type="Float" Value=".3"> </Constant>
+  <!-- Sounds -->
+  <Constant Name="DefaultVolume" Type="Float" Value="1"> </Constant>
+  <Constant Name="ChainPitchIncrease" Type="Float" Value=".5"> </Constant>
+
+  <Constant Name="AbilityCost_No" Type="Float" Value=".3"> </Constant>
   <Constant Name="AbilityCost_Yes" Type="Float" Value="1"> </Constant>
 
   <Constant Name="Moves_Turn_1" Type="Int" Value="1"> </Constant>

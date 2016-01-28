@@ -47,6 +47,12 @@ public class DrsAudioSource : MonoBehaviour {
 			audioSource.loop = dataAudio.ShouldLoop();
 		}
 
+        // change pitch if necessary
+        if ( i_hashOptional.ContainsKey( "pitch" ) ) {
+            float fPitch = (float)i_hashOptional["pitch"];
+            audioSource.pitch = fPitch;
+        }
+
 		gameObject.transform.parent = tf;
 		gameObject.transform.position = tf.position;
 		audioSource.Play();

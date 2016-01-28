@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 //////////////////////////////////////////
@@ -12,7 +13,7 @@ public class ChainManager : Singleton<ChainManager> {
 
     // list of colors in the current chain
     private List<GamePiece_Chain> m_listCurrentChain = new List<GamePiece_Chain>();
-    public bool IsChainStarted() {
+    public bool IsChain() {
         return m_listCurrentChain.Count > 0;
     }
 
@@ -54,8 +55,13 @@ public class ChainManager : Singleton<ChainManager> {
         }
     }
 
+
+    //////////////////////////////////////////
+    /// ResetChain()
+    //////////////////////////////////////////
     public void ResetChain() {
-        if ( IsChainStarted() == false )
+        // if there is no chain, don't do anything
+        if ( IsChain() == false )
             return;
 
         //Debug.Log( "Resetting chain!" );
@@ -68,10 +74,8 @@ public class ChainManager : Singleton<ChainManager> {
     /// OnGamePieceClicked()
     //////////////////////////////////////////
     private void OnGamePieceClicked( GamePiece i_piece ) {
+        // add the incoming piece to the chain
         AddToChain( i_piece );        
-
-        // verify the chain to make sure it's legit
-        VerifyChain();
     }
 
     //////////////////////////////////////////
@@ -79,21 +83,40 @@ public class ChainManager : Singleton<ChainManager> {
     //////////////////////////////////////////
     private void OnGamePieceHover( GamePiece i_piece ) {
         // only add to the chain if the chain has been started
-        if ( IsChainStarted() == false )
+        if ( IsChain() == false )
             return;
 
+        // add the incoming piece to the chain
         AddToChain( i_piece );
+    }
+
+    //////////////////////////////////////////
+    /// AddToChain()
+    /// Adds the incoming piece to the active
+    /// chain.
+    //////////////////////////////////////////
+    private void AddToChain( GamePiece i_piece ) {
+        // get the piece being added and put it on our list
+        GamePiece_Chain piece = (GamePiece_Chain) i_piece;
+        m_listCurrentChain.Add( piece );
+        
+        // let the piece know it's being chained
+        piece.BeingChained();
 
         // verify the chain to make sure it's legit
         VerifyChain();
-    }
 
-    private void AddToChain( GamePiece i_piece ) {
-        GamePiece_Chain piece = (GamePiece_Chain) i_piece;
-
-        m_listCurrentChain.Add( piece );
-        
-        piece.BeingChained();
+        // if there's still a chain after verification, play a sound
+        if ( IsChain() ) {
+            // change the pitch of the sound we play based on the length of the chain
+            float fPitchIncrease = Constants.GetConstant<float>( "ChainPitchIncrease" );
+            float fPitch = 1f + (fPitchIncrease * m_listCurrentChain.Count-1);
+            Hashtable hash = new Hashtable();            
+            hash.Add( "pitch", fPitch );
+ 
+            // play the sound
+            AudioManager.Instance.PlayClip( "Potential2", hash );
+        }
     }
 
 
@@ -113,6 +136,7 @@ public class ChainManager : Singleton<ChainManager> {
         CharacterModel modelPlayer = ModelManager.Instance.GetModel( "Cleric" );
         bool bVerified = modelPlayer.VerifyChain( m_listCurrentChain );
 
+        // if the chain is not verified, reset it
         if ( bVerified == false ) {
             ResetChain();
         }
@@ -122,7 +146,7 @@ public class ChainManager : Singleton<ChainManager> {
     /// OnGamePieceReleased()
     //////////////////////////////////////////
     private void OnGamePieceReleased( GamePiece i_piece ) {
-        if ( IsChainStarted() == false )
+        if ( IsChain() == false )
             return;
 
         // get the ability from the chain
