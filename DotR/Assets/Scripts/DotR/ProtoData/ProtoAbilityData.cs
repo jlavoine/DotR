@@ -43,4 +43,26 @@ public class ProtoAbilityData
         RemovedEffects = new List<RemovedEffectData>();
         DamageTypes = new List<DamageTypes>();
     }
+
+    //////////////////////////////////////////
+    /// VerifyChain()
+    /// Returns whether or not the incoming
+    /// list of colors can be matched to this
+    /// ability.
+    //////////////////////////////////////////
+    public bool VerifyChain( List<AbilityColors> i_listColors ) {
+        // if the chain so far is longer than the ability's required colors, then they are not a match
+        if ( i_listColors.Count > RequiredColors.Count )
+            return false;
+
+        // otherwise, let's check to see if there's a match
+        for ( int i = 0; i < i_listColors.Count; ++i ) {
+            if ( i_listColors[i] != RequiredColors[i] ) {
+                return false;
+            }
+        }
+
+        // if there was a match throughout every color in the chain, verified!
+        return true;
+    }
 }

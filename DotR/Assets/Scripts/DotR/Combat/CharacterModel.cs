@@ -155,24 +155,11 @@ public class CharacterModel : DefaultModel {
         foreach ( GamePiece piece in i_listChain )
             listColors.Add( piece.GetColor() );
 
+        // go through each ability and see if it checks out
         foreach ( ProtoAbilityData data in m_data.Abilities ) {
-            List<AbilityColors> listRequired = data.RequiredColors;
-
-            // if the chain so far is longer than the ability's required colors, then they are not a match
-            if ( listColors.Count > listRequired.Count )
-                continue;
-
-            // otherwise, let's check to see if there's a match
-            bool bMatch = true;
-            for ( int i = 0; i < listColors.Count; ++i ) {
-                if ( listColors[i] != listRequired[i] ) {
-                    bMatch = false;
-                    break;
-                }
-            }
-
-            // if there was a match throughout every color in the chain, verified!
-            if ( bMatch )
+            // if even one ability matches, we're good for now
+            bool bMatch = data.VerifyChain( listColors );
+            if ( bMatch == true )
                 return true;
         }
 

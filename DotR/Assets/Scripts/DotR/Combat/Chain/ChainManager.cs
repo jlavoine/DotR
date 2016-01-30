@@ -16,6 +16,11 @@ public class ChainManager : Singleton<ChainManager> {
     public bool IsChain() {
         return m_listCurrentChain.Count > 0;
     }
+    public List<GamePiece_Chain> CurrentChain {
+        get {
+            return m_listCurrentChain;
+        }
+    }
 
     //////////////////////////////////////////
     /// Awake()
@@ -106,6 +111,7 @@ public class ChainManager : Singleton<ChainManager> {
 
         // add piece to our list
         m_listCurrentChain.Add( piece );
+        Messenger.Broadcast<List<GamePiece_Chain>>( "ChainChanged", m_listCurrentChain );
         
         // let the piece know it's being chained
         piece.BeingChained();
@@ -161,19 +167,12 @@ public class ChainManager : Singleton<ChainManager> {
         ProtoAbilityData dataAbility = modelPlayer.GetAbilityFromChain( m_listCurrentChain );
 
         // if no ability existed, reset everything
-        if ( dataAbility == null ) {
-            ResetChain();
-            return;
-        }
-        else {
+        if ( dataAbility != null ) {
             // otherwise, we got a valid ability...let's do stuff!
 
             // let all the valid pieces know they were part of a complete chain
             foreach ( GamePiece_Chain piece in m_listCurrentChain )
                 piece.ChainComplete();
-
-            // reset our list
-            m_listCurrentChain = new List<GamePiece_Chain>();
 
             // queue up the ability
             Messenger.Broadcast<ProtoAbilityData, ProtoCharacterData>( "QueueActionWithCharacter", dataAbility, modelPlayer.GetData() );
@@ -187,5 +186,8 @@ public class ChainManager : Singleton<ChainManager> {
             // let the enemy take a turn! (HACK FOR NOW)
             Messenger.Broadcast( "MonsterTurn" );
         }
+
+        // after everything has been processed, reset the chain
+        ResetChain();
     }
 }
