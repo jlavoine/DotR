@@ -219,6 +219,15 @@
             "RequiredColor": 3,
             "Target": 1,
             "Power": -25
+          },
+          {
+            "$type": "ProtoAbilityData, Assembly-CSharp",
+            "Name": "Insane Attack",
+            "Desc": "Medium Deal 50 damage.",
+            "Cost": 3,
+            "RequiredColor": 3,
+            "Target": 1,
+            "Power": -25
           }
         ]
       }

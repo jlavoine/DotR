@@ -32,7 +32,7 @@ public class MonsterAI_Chain : MonoBehaviour {
             m_queueActions.Enqueue( ability );
 
             // send a message so that views can react to the queuing
-            Messenger.Broadcast<ProtoAbilityData>( "MonsterQueuedAbility", ability );
+            Messenger.Broadcast<ProtoAbilityData, bool>( "MonsterQueuedAbility", ability, true );
         }
     }
 
@@ -71,7 +71,7 @@ public class MonsterAI_Chain : MonoBehaviour {
 
         // now re-add the ability to the back of the monster's queue and send a message of the re-queue for the view
         m_queueActions.Enqueue( dataAbility );        
-        Messenger.Broadcast<ProtoAbilityData>( "MonsterQueuedAbility", dataAbility );
+        Messenger.Broadcast<ProtoAbilityData, bool>( "MonsterQueuedAbility", dataAbility, false );
 
         // end the round now so the action is processed by the action manager (HACK)
         Messenger.Broadcast( "RoundEnded" );
