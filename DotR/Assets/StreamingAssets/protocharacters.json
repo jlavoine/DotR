@@ -104,9 +104,7 @@
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
             "Name": "Heal",
-            "Desc": "Heal 10 health.",
-            "Cost": 3,
-            "RequiredColor": 1,
+            "Desc": "Heal 20 health.",
             "RequiredColors": {
               "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "$values": [
@@ -115,42 +113,133 @@
               ]
             },
             "Target": 0,
-            "Power": 10
+            "Power": 20
           },
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
+            "Name": "Prayer of Healing",
+            "Desc": "Heal 10 health and bless yourself with Arron's power.",
+            "RequiredColors": {
+              "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                2,
+                2,
+                2
+              ]
+            },
+            "Target": 0,
+            "Power": 10,
+            "AppliedEffects": {
+              "$type": "System.Collections.Generic.List`1[[AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                {
+                  "$type": "AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "EffectID": "Blessing_Regen",
+                  "Target": 0
+                }
+              ]
+            }            
+          },          
+          {
+            "$type": "ProtoAbilityData, Assembly-CSharp",
             "Name": "Holy Fire",
-            "Desc": "Deal 25 damage.",
-            "Cost": 4,
-            "RequiredColor": 2,
+            "Desc": "Deal 25 + 10 damage per blessing. Consumes all blessings.",
             "RequiredColors": {
               "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "$values": [
                 0,
                 3,
                 3,
-                3
+                0
               ]
             },
             "Target": 1,
-            "Power": -25
+            "Power": -25,
+            "Bonuses": {
+              "$type": "System.Collections.Generic.List`1[[BonusData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                {
+                  "$type": "BonusData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "BonusType": 0,
+                  "Target": 0,
+                  "Stat": "Blessing",
+                  "CheckAmount": 1,
+                  "BonusAmount": -10
+                }
+              ]
+            },            
+            "RemovedEffects": {
+              "$type": "System.Collections.Generic.List`1[[RemovedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                {
+                  "$type": "RemovedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Categories": {
+                    "$type": "System.Collections.Generic.List`1[[EffectCategories, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "$values": [
+                        0
+                    ]
+                  },
+                  "Target": 0
+                }
+              ]
+            }            
           },
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
-            "Name": "Heavy Attack",
-            "Desc": "Deal 20 damage.",
-            "Cost": 3,
-            "RequiredColor": 3,
+            "Name": "Holy Strike",
+            "Desc": "Deal 20 + 5 damage per blessing. Consumes all blessings.",
             "RequiredColors": {
               "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "$values": [
                 1,
+                0,
+                1
+              ]
+            },
+            "Target": 1,
+            "Power": -20,
+            "Bonuses": {
+              "$type": "System.Collections.Generic.List`1[[BonusData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                {
+                  "$type": "BonusData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "BonusType": 0,
+                  "Target": 0,
+                  "Stat": "Blessing",
+                  "CheckAmount": 1,
+                  "BonusAmount": -5
+                }
+              ]
+            },            
+            "RemovedEffects": {
+              "$type": "System.Collections.Generic.List`1[[RemovedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                {
+                  "$type": "RemovedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Categories": {
+                    "$type": "System.Collections.Generic.List`1[[EffectCategories, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                    "$values": [
+                        0
+                    ]
+                  },
+                  "Target": 0
+                }
+              ]
+            }            
+          },          
+          {
+            "$type": "ProtoAbilityData, Assembly-CSharp",
+            "Name": "Attack",
+            "Desc": "Deal 15 damage.",
+            "RequiredColors": {
+              "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
                 1,
                 0
               ]
             },
             "Target": 1,
-            "Power": -20
+            "Power": -15
           }
         ]
       }

@@ -122,6 +122,11 @@ public class AbilityView_Chain : AbilityView {
 
         // turn the elements on/off (this is the parent object of all ui pieces inside the view)
         m_goElements.SetActive( i_bVis );
+
+        // whenever we change the visibility of one of these views, we need to reset the parent scroll rect...
+        // trying to fix a bug, but can't seem to reproduce is now...
+        //ScrollRect rect = GetComponentInParent<ScrollRect>();
+        //rect.scroll
     }
 
     //////////////////////////////////////////

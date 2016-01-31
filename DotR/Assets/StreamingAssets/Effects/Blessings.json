@@ -21,6 +21,12 @@
             "Target": "HpTick",
             "ModType": 0,
             "Amount": 5.0
+          },
+          {
+            "$type": "ModificationData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Target": "Blessing",
+            "ModType": 0,
+            "Amount": 1.0
           }
         ]
       },
@@ -46,6 +52,12 @@
             "Target": "AllDamage",
             "ModType": 0,
             "Amount": -5.0
+          },
+          {
+            "$type": "ModificationData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Target": "Blessing",
+            "ModType": 0,
+            "Amount": 1.0
           }
         ]
       },
@@ -71,6 +83,12 @@
             "Target": "PhysicalDefense",
             "ModType": 0,
             "Amount": 5.0
+          },
+          {
+            "$type": "ModificationData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Target": "Blessing",
+            "ModType": 0,
+            "Amount": 1.0
           }
         ]
       },
@@ -96,6 +114,12 @@
             "Target": "MagicalDefense",
             "ModType": 0,
             "Amount": 5.0
+          },
+          {
+            "$type": "ModificationData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Target": "Blessing",
+            "ModType": 0,
+            "Amount": 1.0
           }
         ]
       },

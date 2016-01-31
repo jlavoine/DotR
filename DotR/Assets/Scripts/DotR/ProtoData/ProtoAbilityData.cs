@@ -28,6 +28,9 @@ public class ProtoAbilityData
     // power of the ability
     public int Power;
 
+    // list of bonuses this ability has
+    public List<BonusData> Bonuses;
+
     // damage types of the ability
     public List<DamageTypes> DamageTypes;
 
@@ -42,6 +45,7 @@ public class ProtoAbilityData
         AppliedEffects = new List<AppliedEffectData>();
         RemovedEffects = new List<RemovedEffectData>();
         DamageTypes = new List<DamageTypes>();
+        Bonuses = new List<BonusData>();
     }
 
     //////////////////////////////////////////

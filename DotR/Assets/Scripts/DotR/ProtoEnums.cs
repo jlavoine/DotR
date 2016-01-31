@@ -45,3 +45,8 @@ public enum DamageTypes {
     Physical,
     Magical
 }
+
+public enum BonusTypes {
+    ForEvery,
+    AtLeast
+}

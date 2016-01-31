@@ -122,6 +122,9 @@ public class ActionManager : MonoBehaviour {
         int nPowerBonus = modelAggressor.GetTotalModification( "AllDamage" );
         int nDamage = i_action.GetData().Power + nPowerBonus;
 
+        // check for valid bonus damage
+        nDamage = CheckForBonuses( i_action.GetData(), nDamage, modelTarget, modelAggressor );
+
         // now do defenses -- for now, just handle one
         if ( i_action.GetData().DamageTypes.Count > 0 ) {
             DamageTypes eDamageType = i_action.GetData().DamageTypes[0];
@@ -157,6 +160,24 @@ public class ActionManager : MonoBehaviour {
             // remove the effect!
             modelEffectRemoval.RemoveEffect( removal );
         }
+    }
+
+    //////////////////////////////////////////
+    /// CheckForBonuses()
+    /// Checks for bonuses and alters the
+    /// incoming damage based on them, if
+    /// necessary.
+    //////////////////////////////////////////
+    private int CheckForBonuses( ProtoAbilityData i_dataAbility, int i_nDamage, CharacterModel i_charTarget, CharacterModel i_charAggressor ) {
+        // get the list of bonuses on this ability
+        List<BonusData> listBonuses = i_dataAbility.Bonuses;
+
+        // go through each bonus data and add its bonus to the total damage
+        foreach ( BonusData dataBonus in listBonuses ) {
+            i_nDamage += dataBonus.GetBonusAmount( i_charAggressor, i_charTarget );
+        }
+
+        return i_nDamage;
     }
 
     //////////////////////////////////////////
