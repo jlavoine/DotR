@@ -145,6 +145,17 @@ public class CharacterModel : DefaultModel {
     }
 
     //////////////////////////////////////////
+    /// IsDead()
+    /// Returns whether or not this character
+    /// has been defeated.
+    //////////////////////////////////////////
+    public bool IsDead() {
+        int nHP = GetPropertyValue<int>( "HP" );
+        bool bDead = nHP <= 0;
+        return bDead;
+    }
+
+    //////////////////////////////////////////
     /// VerifyChain()
     /// Returns true if this character has
     /// an ability that meets the incoming

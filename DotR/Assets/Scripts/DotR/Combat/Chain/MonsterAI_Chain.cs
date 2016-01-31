@@ -62,6 +62,10 @@ public class MonsterAI_Chain : MonoBehaviour {
     /// Uses the monster's next action.
     //////////////////////////////////////////
     private void UseAction() {
+        // not a huge fan of doing this -- check for game over
+        if ( VictoryManager.Instance.IsGameOver() )
+            return;
+
         // take the first ability off the queue
         ProtoAbilityData dataAbility = m_queueActions.Dequeue();
 

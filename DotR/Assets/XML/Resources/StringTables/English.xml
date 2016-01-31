@@ -8,5 +8,8 @@
   <String ID="STATE_On">ACTIVE</String>
   <String ID="STATE_Off">NOT ACTIVE</String>
 
+  <String ID="GameOver_Victory">Victory!!!</String>
+  <String ID="GameOver_Defeat">Defeat...</String>
+
   <String ID="BLESSING_TOOLTIP">&lt;b&gt;$STATE$&lt;/b&gt;\n$BODY$</String>
 </English>

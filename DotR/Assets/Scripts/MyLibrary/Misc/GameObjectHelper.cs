@@ -10,6 +10,16 @@ public static class GameObjectHelper
 		        where x.gameObject.name == name
 		        select x.gameObject).FirstOrDefault();
 	}
+
+    public static GameObject InstantiateUI( this GameObject go, GameObject i_goPrefab, GameObject i_goParent = null ) {
+        GameObject goNew = GameObject.Instantiate<GameObject>( i_goPrefab );
+        if ( i_goParent == null )
+            i_goParent = go;
+
+        goNew.transform.SetParent( i_goParent.transform, false );
+
+        return goNew;
+    }
 	
 	public static GameObject GetParent( this GameObject go ) {
 		GameObject goParent = null;
