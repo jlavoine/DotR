@@ -315,7 +315,7 @@
               ]
             }, 
             "Target": 1,
-            "Power": -25
+            "Power": -30
           },
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
@@ -328,7 +328,7 @@
               ]
             }, 
             "Target": 1,
-            "Power": -25
+            "Power": -50
           }
         ]
       }
