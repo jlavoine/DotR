@@ -12,7 +12,7 @@
             {
             "$type": "ProtoAbilityData, Assembly-CSharp",
             "Name": "Blessing of Arrun",
-            "Desc": "Bless yourself with Arrun's power.",
+            "Desc": "Bless yourself with Arrun's power; while active, gain +5 HP per turn.",
             "RequiredColors": {
               "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "$values": [
@@ -35,7 +35,7 @@
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
             "Name": "Blessing of Esh",
-            "Desc": "Bless yourself with Esh's power.",
+            "Desc": "Bless yourself with Esh's power; while active gain +5 damage on all attacks.",
             "RequiredColors": {
               "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "$values": [
@@ -58,7 +58,7 @@
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
             "Name": "Blessing of Pokai",
-            "Desc": "Bless yourself with Pokai's power.",
+            "Desc": "Bless yourself with Pokai's power; while active, gain +5 physical defense.",
             "RequiredColors": {
               "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "$values": [
@@ -81,7 +81,7 @@
           {
             "$type": "ProtoAbilityData, Assembly-CSharp",
             "Name": "Blessing of Mu",
-            "Desc": "Bless yourself with Mu's power.",
+            "Desc": "Bless yourself with Mu's power; while active, gain +5 magical defense.",
             "RequiredColors": {
               "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "$values": [
