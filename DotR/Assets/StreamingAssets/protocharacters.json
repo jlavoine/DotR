@@ -256,8 +256,6 @@
             "$type": "ProtoAbilityData, Assembly-CSharp",
             "Name": "Attack",
             "Desc": "Deal 15 damage.",
-            "Cost": 3,
-            "RequiredColor": 0,
             "DamageTypes": {
               "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "$values": [
@@ -271,12 +269,10 @@
             "$type": "ProtoAbilityData, Assembly-CSharp",
             "Name": "Attack",
             "Desc": "Deal 10 damage.",
-            "Cost": 3,
-            "RequiredColor": 1,
             "DamageTypes": {
               "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
               "$values": [
-                1
+                0
               ]
             },            
             "Target": 1,
@@ -286,8 +282,12 @@
             "$type": "ProtoAbilityData, Assembly-CSharp",
             "Name": "Heavy Attack",
             "Desc": "Deal 30 damage.",
-            "Cost": 3,
-            "RequiredColor": 1,
+            "DamageTypes": {
+              "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                0
+              ]
+            },             
             "Target": 1,
             "Power": -30
           },
@@ -295,8 +295,12 @@
             "$type": "ProtoAbilityData, Assembly-CSharp",
             "Name": "Medium Attack",
             "Desc": "Deal 20 damage.",
-            "Cost": 3,
-            "RequiredColor": 2,
+            "DamageTypes": {
+              "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                0
+              ]
+            }, 
             "Target": 1,
             "Power": -20
           },
@@ -304,8 +308,12 @@
             "$type": "ProtoAbilityData, Assembly-CSharp",
             "Name": "Heavy Attack",
             "Desc": "Medium Deal 30 damage.",
-            "Cost": 3,
-            "RequiredColor": 3,
+            "DamageTypes": {
+              "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                0
+              ]
+            }, 
             "Target": 1,
             "Power": -25
           },
@@ -313,8 +321,12 @@
             "$type": "ProtoAbilityData, Assembly-CSharp",
             "Name": "Insane Attack",
             "Desc": "Medium Deal 50 damage.",
-            "Cost": 3,
-            "RequiredColor": 3,
+            "DamageTypes": {
+              "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                0
+              ]
+            }, 
             "Target": 1,
             "Power": -25
           }
