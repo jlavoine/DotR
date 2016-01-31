@@ -151,6 +151,9 @@ public class ChainManager : Singleton<ChainManager> {
 
         // if the chain is not verified, reset it
         if ( bVerified == false ) {
+            // play a sound to let the user know they messed up too
+            AudioManager.Instance.PlayClip( "BrokenChain" );
+
             ResetChain();
         }
     }
