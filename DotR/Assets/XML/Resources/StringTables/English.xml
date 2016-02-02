@@ -12,4 +12,7 @@
   <String ID="GameOver_Defeat">Defeat...</String>
 
   <String ID="BLESSING_TOOLTIP">&lt;b&gt;$STATE$&lt;/b&gt;\n$BODY$</String>
+
+  <String ID="PerkName_HealingBoost">Piety</String>
+  <String ID="PerkDesc_HealingBoost">Boost your healing.</String>
 </English>
