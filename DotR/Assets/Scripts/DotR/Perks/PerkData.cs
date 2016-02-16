@@ -9,11 +9,8 @@ public class PerkData : GenericData  {
     // dictionary of perks and levels required for this perk
     public Dictionary<string, int> PerkRequirements;
 
-    // the stat this perk affects
-    public string Stat;
-
-    // list of bonuses this perk applies (for each level)
-    public List<int> BonusList;
+    // list of benefits for this perk
+    public List<PerkBenefit> Benefits;
 
     // list of XP requirements for this perk (for each level)
     public List<int> ExpList;
@@ -24,10 +21,11 @@ public class PerkData : GenericData  {
         ex.ID = "PERK_1";
         ex.PerkRequirements = new Dictionary<string, int>();
         ex.PerkRequirements.Add( "Perk_2", 3 );
-        ex.Stat = "HP";
-        ex.BonusList = new List<int>();
-        ex.BonusList.Add( 5 );
-        ex.BonusList.Add( 6 );
+        ex.Benefits = new List<PerkBenefit>();
+        PerkBenefit benefit = new PerkBenefit();
+        benefit.Stat = "HP";
+        benefit.BonusList = new List<int>() { 3, 4, 5 };
+        ex.Benefits.Add( benefit );
         ex.ExpList = new List<int>();
         ex.ExpList.Add( 100 );
 
@@ -36,5 +34,19 @@ public class PerkData : GenericData  {
 
     public PerkData() {
         PerkRequirements = new Dictionary<string, int>();
+    }
+
+    //////////////////////////////////////////
+    /// GetCostToTrain()
+    /// Returns the cost to train this perk
+    /// based on the incoming level.
+    //////////////////////////////////////////
+    public int GetCostToTrain( int i_nLevel ) {
+        int nCost = -1;
+
+        if ( ExpList.Count > i_nLevel )
+            nCost = ExpList[i_nLevel];
+
+        return nCost;
     }
 }

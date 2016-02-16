@@ -22,8 +22,9 @@ public abstract class IDL_Perks {
 
         // get the data and send an error if it's null
         PerkData data = null;
-        if ( m_dictData.ContainsKey( i_strKey ) )
+        if ( m_dictData.ContainsKey( i_strKey ) ) {
             data = m_dictData[i_strKey];
+        }
         else
             Debug.LogError( "Looking for perk data with key " + i_strKey + " but not found!" );
 

@@ -23,7 +23,9 @@ public class TurnManager_Chain : Singleton<TurnManager_Chain> {
     //////////////////////////////////////////
     /// OnDestroy()
     //////////////////////////////////////////
-    void OnDestroy() {
+    protected override void OnDestroy() {
+        base.OnDestroy();
+
         // unsub from messages
         ListenForMessages( false );
     }

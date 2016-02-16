@@ -47,7 +47,9 @@ public class TurnManager : Singleton<TurnManager> {
     //////////////////////////////////////////
     /// OnDestroy()
     //////////////////////////////////////////
-    void OnDestroy() {
+    protected override void OnDestroy() {
+        base.OnDestroy();
+
         // unsub from messages
         ListenForMessages( false );
     }

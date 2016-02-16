@@ -39,7 +39,9 @@ public class ChainManager : Singleton<ChainManager> {
     //////////////////////////////////////////
     /// OnDestroy()
     //////////////////////////////////////////
-    private void OnDestroy() {
+    protected override void OnDestroy() {
+        base.OnDestroy();
+
         ListenForMessages( false );
     }
 

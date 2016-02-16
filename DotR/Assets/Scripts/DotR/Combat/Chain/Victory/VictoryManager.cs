@@ -28,7 +28,8 @@ public class VictoryManager : Singleton<VictoryManager> {
     //////////////////////////////////////////
     /// OnDestroy()
     //////////////////////////////////////////
-    void OnDestroy() {
+    protected override void OnDestroy() {
+        base.OnDestroy();
         ListenForMessages( false );
     }
 

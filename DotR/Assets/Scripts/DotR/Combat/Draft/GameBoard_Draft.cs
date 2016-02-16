@@ -79,7 +79,8 @@ public class Gameboard_Draft : Singleton<Gameboard_Draft> {
     //////////////////////////////////////////
     /// OnDestroy()
     //////////////////////////////////////////
-    private void OnDestroy() {
+    protected override void OnDestroy() {
+        base.OnDestroy();
         SetUpMessages( false );
     }
 

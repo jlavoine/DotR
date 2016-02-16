@@ -61,11 +61,11 @@ public class GameBoard_Chain : Singleton<GameBoard_Chain> {
         // create the game board
         SetUpBoard();
 
-        /*EffectData ex = EffectData.GetExample();
-        List<EffectData> listEx = new List<EffectData>();
+        PlayerData ex = PlayerData.GetExample();
+        List<PlayerData> listEx = new List<PlayerData>();
         listEx.Add( ex );
         string json = SerializationUtils.Serialize( listEx );
-        Debug.Log( json );*/
+        Debug.Log( json );
 
         //EffectData eff = IDL_Effects.GetData( "BLESSING_REGEN" );
         //Debug.Log( "Hows this: " + eff.Name );
@@ -88,7 +88,9 @@ public class GameBoard_Chain : Singleton<GameBoard_Chain> {
     //////////////////////////////////////////
     /// OnDestroy()
     //////////////////////////////////////////
-    private void OnDestroy() {
+    protected override void OnDestroy() {
+        base.OnDestroy();
+
         SetUpMessages( false );
     }
 

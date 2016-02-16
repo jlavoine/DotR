@@ -11,10 +11,15 @@ using System.IO;
  
 public static class DataUtils {
 
-	public static string LoadFile( string i_strFile ) {
+    //////////////////////////////////////////
+    /// LoadFile()
+    /// Returns whatever text is in the
+    /// incoming file.
+    //////////////////////////////////////////
+    public static string LoadFile( string i_strFile ) {
 		string strData = "";
 
-		string strPath = Application.streamingAssetsPath + "/" + i_strFile;
+        string strPath = GetPath( i_strFile );
 		if ( File.Exists( strPath ) ) {
 			FileStream file = new FileStream( strPath, FileMode.Open, FileAccess.Read );
 			StreamReader sr = new StreamReader( file );
@@ -26,6 +31,27 @@ public static class DataUtils {
 
 		return strData;
 	}
+
+    //////////////////////////////////////////
+    /// SaveFile()
+    /// Saves the incoming data to the incoming
+    /// file.
+    //////////////////////////////////////////
+    public static void SaveFile( string i_strFile, object i_data ) {
+        string strJSON = SerializationUtils.Serialize( i_data );
+        string strPath = GetPath( i_strFile );
+        System.IO.File.WriteAllText( strPath, strJSON );
+    }
+
+    //////////////////////////////////////////
+    /// GetPath()
+    /// Returns the path (from streaming
+    /// assets) of the incoming file name.
+    //////////////////////////////////////////
+    private static string GetPath( string i_strFile ) {
+        string strPath = Application.streamingAssetsPath + "/" + i_strFile;
+        return strPath;
+    }
 
     //////////////////////////////////////////
     /// LoadFiles()
