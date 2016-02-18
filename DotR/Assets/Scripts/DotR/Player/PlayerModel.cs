@@ -84,6 +84,33 @@ public class PlayerModel : DefaultModel {
     }
 
     //////////////////////////////////////////
+    /// CanTrainPerk()
+    /// Returns whether or not the player
+    /// can train the incoming perk.
+    //////////////////////////////////////////
+    public bool CanTrainPerk( string i_strKey ) {
+        // get the player's perks
+        Dictionary<string, int> dictPerks = GetPropertyValue<Dictionary<string, int>>( "Perks" );
+
+        // get the perk data
+        PerkData dataPerk = IDL_Perks.GetData( i_strKey );
+        if ( dataPerk != null ) {
+            // go through all the requirements and make sure the player has the perks at that level
+            foreach ( KeyValuePair<string, int> req in dataPerk.PerkRequirements ) {
+                // the player doesn't even have required perk? fail
+                if ( dictPerks.ContainsKey( req.Key ) == false )
+                    return false;
+
+                // the player has the required perk but not at the required level? fail
+                if ( dictPerks[req.Key] < req.Value )
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    //////////////////////////////////////////
     /// TrainPerk()
     //////////////////////////////////////////
     public void TrainPerk( string i_strKey ) {

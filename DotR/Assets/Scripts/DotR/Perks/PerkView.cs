@@ -64,9 +64,15 @@ public class PerkView : PropertyView {
     //////////////////////////////////////////
     /// UpdateView()
     //////////////////////////////////////////
-    public override void UpdateView() {
+    public override void UpdateView() {        
+        // update the UI of the perk
         UpdateName();
         UpdateCost();
+
+        // if the perk is inaccessible, make it non-interactable
+        PlayerModel model = (PlayerModel) ModelToView;
+        bool bAccessible = model.CanTrainPerk( Data.ID );
+        GetComponent<Button>().interactable = bAccessible;
     }
 
     //////////////////////////////////////////

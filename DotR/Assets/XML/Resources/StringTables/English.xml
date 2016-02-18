@@ -16,5 +16,8 @@
   <String ID="PerkName_HealingBoost">Piety</String>
   <String ID="PerkDesc_HealingBoost">Boost your healing.</String>
 
+  <String ID="PerkName_FavorRegen">Favor of Arrun</String>
+  <String ID="PerkDesc_FavorRegen">Increase the regen tick of Blessing of Arrun.</String>
+  
   <String ID="Perk_ToTrain">To Train: $COST$</String>
 </English>

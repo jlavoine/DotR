@@ -13,11 +13,11 @@ public class PerksManager : Singleton<PerksManager> {
     public string PlayerID;
 
     void Start() {
-        /*PlayerData ex = PlayerData.GetExample();
+        //PerkData ex = PerkData.GetExample();
         //List<PlayerData> listEx = new List<PlayerData>();
         //listEx.Add( ex );
-        string json = SerializationUtils.Serialize( ex );
-        Debug.Log( json );*/
+        //string json = SerializationUtils.Serialize( ex );
+        //Debug.Log( json );
     }
 
 }
