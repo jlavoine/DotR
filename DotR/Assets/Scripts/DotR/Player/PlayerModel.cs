@@ -61,6 +61,16 @@ public class PlayerModel : DefaultModel {
     }
 
     //////////////////////////////////////////
+    /// Debug_AddXP()
+    /// For testing, add some XP.
+    //////////////////////////////////////////
+    public void Debug_AddXP() {
+        int nXP = GetPropertyValue<int>( "XP" );
+        nXP += 1000;
+        SetProperty( "XP", nXP );
+    }
+
+    //////////////////////////////////////////
     /// GetCurrentXP()
     //////////////////////////////////////////
     public int GetCurrentXP() {
