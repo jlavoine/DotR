@@ -16,6 +16,9 @@ public class PlayerData : GenericData {
     // available XP
     public int XP;
 
+    // list of character abilities
+    public List<string> Abilities;
+
     // perks mapped to their level
     public Dictionary<string, int> Perks;
 
@@ -26,6 +29,7 @@ public class PlayerData : GenericData {
         ex.Name = "Finthis";
         ex.Class = "Cleric";
         ex.XP = 1000;
+        ex.Abilities = new List<string>() { "A", "B" };
         ex.Perks = new Dictionary<string, int>();
 
         return ex;

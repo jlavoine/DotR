@@ -25,9 +25,9 @@ public class PlayerModel : DefaultModel {
         SetProperty( "Perks", data.Perks );
 
         // send out a message about all the perks the player has
-        foreach ( KeyValuePair<string,int> pair in data.Perks ) {
+        //foreach ( KeyValuePair<string,int> pair in data.Perks ) {
             //Messenger.Broadcast<string, int>( "SetPerk", pair.Key, pair.Value );
-        }
+        //}
     }
 
     //////////////////////////////////////////

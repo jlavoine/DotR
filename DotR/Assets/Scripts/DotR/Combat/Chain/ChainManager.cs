@@ -169,7 +169,7 @@ public class ChainManager : Singleton<ChainManager> {
 
         // get the ability from the chain
         CharacterModel modelPlayer = ModelManager.Instance.GetModel( "Cleric" );
-        ProtoAbilityData dataAbility = modelPlayer.GetAbilityFromChain( m_listCurrentChain );
+        AbilityData dataAbility = modelPlayer.GetAbilityFromChain( m_listCurrentChain );
 
         // if no ability existed, reset everything
         if ( dataAbility != null ) {
@@ -180,7 +180,7 @@ public class ChainManager : Singleton<ChainManager> {
                 piece.ChainComplete();
 
             // queue up the ability
-            Messenger.Broadcast<ProtoAbilityData, ProtoCharacterData>( "QueueActionWithCharacter", dataAbility, modelPlayer.GetData() );
+            Messenger.Broadcast<AbilityData, ProtoCharacterData>( "QueueActionWithCharacter", dataAbility, modelPlayer.GetData() );
 
             // end the round now so the action is processed (HACK)
             Messenger.Broadcast( "RoundEnded" );

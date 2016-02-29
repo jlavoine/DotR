@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 
 //////////////////////////////////////////
 /// ModificationData
@@ -17,6 +17,9 @@ public class ModificationData {
     // the actual amount to modify by
     public float Amount;
 
+    // list of perk keys that effect this modification
+    public List<string> PerkKeys;
+
     //////////////////////////////////////////
     /// GetExample()
     /// Returns an example of this class, used
@@ -26,6 +29,7 @@ public class ModificationData {
         ModificationData example = new ModificationData();
         example.Target = "Strength";
         example.ModType = ModificationTypes.Flat;
+        example.PerkKeys = new List<string>() { "PerkA", "PerkB" };
         example.Amount = 3;
 
         return example;

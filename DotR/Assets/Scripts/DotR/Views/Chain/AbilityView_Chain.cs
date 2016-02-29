@@ -21,7 +21,7 @@ public class AbilityView_Chain : AbilityView {
     /// Inits this UI with the incoming
     /// ability data.
     //////////////////////////////////////////
-    public override void Init( ProtoAbilityData i_data ) {
+    public override void Init( AbilityData i_data ) {
         base.Init( i_data );
 
         // cache some parts of the view
@@ -133,7 +133,7 @@ public class AbilityView_Chain : AbilityView {
     /// Adds a tooltip to this ability view
     /// using the ability's description.
     //////////////////////////////////////////
-    private void AddTooltip( ProtoAbilityData i_data ) {
+    private void AddTooltip( AbilityData i_data ) {
         TooltipTrigger tooltipTrigger = gameObject.AddComponent<TooltipTrigger>();
         TooltipStyle tooltipStyle = Resources.Load<TooltipStyle>( "CleanSimple" );
         tooltipTrigger.tooltipStyle = tooltipStyle;

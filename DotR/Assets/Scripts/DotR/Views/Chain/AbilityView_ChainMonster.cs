@@ -9,7 +9,7 @@ public class AbilityView_ChainMonster : AbilityView {
     /// Inits this UI with the incoming
     /// ability data.
     //////////////////////////////////////////
-    public override void Init( ProtoAbilityData i_data ) {
+    public override void Init( AbilityData i_data ) {
         base.Init( i_data );
     }
 }

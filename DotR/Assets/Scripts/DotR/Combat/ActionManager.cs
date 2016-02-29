@@ -37,13 +37,13 @@ public class ActionManager : MonoBehaviour {
     //////////////////////////////////////////
     private void ListenForMessages( bool i_bSubscribe ) {
         if ( i_bSubscribe ) {
-            Messenger.AddListener<ProtoAbilityData>( "QueueAction", QueueAction );
-            Messenger.AddListener<ProtoAbilityData, ProtoCharacterData>( "QueueActionWithCharacter", QueueActionWithCharacter );
+            Messenger.AddListener<AbilityData>( "QueueAction", QueueAction );
+            Messenger.AddListener<AbilityData, ProtoCharacterData>( "QueueActionWithCharacter", QueueActionWithCharacter );
             Messenger.AddListener( "RoundEnded", ExecuteActions );
         }
         else {
-            Messenger.RemoveListener<ProtoAbilityData>( "QueueAction", QueueAction );
-            Messenger.RemoveListener<ProtoAbilityData, ProtoCharacterData>( "QueueActionWithCharacter", QueueActionWithCharacter );
+            Messenger.RemoveListener<AbilityData>( "QueueAction", QueueAction );
+            Messenger.RemoveListener<AbilityData, ProtoCharacterData>( "QueueActionWithCharacter", QueueActionWithCharacter );
             Messenger.RemoveListener( "RoundEnded", ExecuteActions );
         }
     }
@@ -61,13 +61,13 @@ public class ActionManager : MonoBehaviour {
     /// Queues an action for whichever character
     /// is currently active.
     //////////////////////////////////////////
-    private void QueueAction( ProtoAbilityData i_dataAbility ) {
+    private void QueueAction( AbilityData i_dataAbility ) {
         // char whose turn it is
         ProtoCharacterData charCurrent = TurnManager.Instance.GetCurrentCharacter();
 
         QueueActionWithCharacter( i_dataAbility, charCurrent );
     }
-    private void QueueActionWithCharacter( ProtoAbilityData i_dataAbility, ProtoCharacterData i_dataCharacter ) {
+    private void QueueActionWithCharacter( AbilityData i_dataAbility, ProtoCharacterData i_dataCharacter ) {
         // create the queued action and add it to our queue
         QueuedAction action = new QueuedAction( i_dataCharacter, i_dataAbility );
         m_queueActions.Enqueue( action );
@@ -168,7 +168,7 @@ public class ActionManager : MonoBehaviour {
     /// incoming damage based on them, if
     /// necessary.
     //////////////////////////////////////////
-    private int CheckForBonuses( ProtoAbilityData i_dataAbility, int i_nDamage, CharacterModel i_charTarget, CharacterModel i_charAggressor ) {
+    private int CheckForBonuses( AbilityData i_dataAbility, int i_nDamage, CharacterModel i_charTarget, CharacterModel i_charAggressor ) {
         // get the list of bonuses on this ability
         List<BonusData> listBonuses = i_dataAbility.Bonuses;
 

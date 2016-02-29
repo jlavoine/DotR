@@ -1,0 +1,246 @@
+{
+  "$type": "System.Collections.Generic.List`1[[AbilityData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+  "$values": [
+    {
+      "$type": "AbilityData, Assembly-CSharp",
+      "Name": "Blessing of Arrun",
+      "ID": "Blessing_Regen",
+      "Desc": "Bless yourself with Arrun's power; while active, gain +5 HP per turn.",
+      "RequiredColors": {
+        "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          2
+        ]
+      },
+      "Target": 0,
+      "Power": 0,
+      "AppliedEffects": {
+        "$type": "System.Collections.Generic.List`1[[AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          {
+            "$type": "AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "EffectID": "Blessing_Regen",
+            "Target": 0
+          }
+        ]
+      }
+    },
+    {
+      "$type": "AbilityData, Assembly-CSharp",
+      "Name": "Blessing of Esh",
+      "ID": "Blessing_AllDamage",
+      "Desc": "Bless yourself with Esh's power; while active gain +5 damage on all attacks.",
+      "RequiredColors": {
+        "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          0
+        ]
+      },
+      "Target": 1,
+      "Power": 0,
+      "AppliedEffects": {
+        "$type": "System.Collections.Generic.List`1[[AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          {
+            "$type": "AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "EffectID": "Blessing_AllDamage",
+            "Target": 0
+          }
+        ]
+      }
+    },
+    {
+      "$type": "AbilityData, Assembly-CSharp",
+      "Name": "Blessing of Pokai",
+      "ID": "Blessing_PhyDef",
+      "Desc": "Bless yourself with Pokai's power; while active, gain +5 physical defense.",
+      "RequiredColors": {
+        "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          1
+        ]
+      },
+      "Target": 1,
+      "Power": 0,
+      "AppliedEffects": {
+        "$type": "System.Collections.Generic.List`1[[AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          {
+            "$type": "AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "EffectID": "Blessing_PhyDef",
+            "Target": 0
+          }
+        ]
+      }
+    }, 
+    {
+      "$type": "AbilityData, Assembly-CSharp",
+      "Name": "Blessing of Mu",
+      "ID": "Blessing_MagDef",
+      "Desc": "Bless yourself with Mu's power; while active, gain +5 magical defense.",
+      "RequiredColors": {
+        "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          3
+        ]
+      },
+      "Target": 1,
+      "Power": 0,
+      "AppliedEffects": {
+        "$type": "System.Collections.Generic.List`1[[AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          {
+            "$type": "AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "EffectID": "Blessing_MagDef",
+            "Target": 0
+          }
+        ]
+      }
+    },                   
+    {
+      "$type": "AbilityData, Assembly-CSharp",
+      "Name": "Heal",
+      "ID": "Cleric_Heal_1",
+      "Desc": "Heal 20 health.",
+      "RequiredColors": {
+        "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          2,
+          2
+        ]
+      },
+      "Target": 0,
+      "Power": 20
+    },
+    {
+      "$type": "AbilityData, Assembly-CSharp",
+      "Name": "Prayer of Healing",
+      "ID": "Cleric_Prayer_Healing",
+      "Desc": "Heal 10 health and bless yourself with Arron's power.",
+      "RequiredColors": {
+        "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          2,
+          2,
+          2
+        ]
+      },
+      "Target": 0,
+      "Power": 10,
+      "AppliedEffects": {
+        "$type": "System.Collections.Generic.List`1[[AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          {
+            "$type": "AppliedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "EffectID": "Blessing_Regen",
+            "Target": 0
+          }
+        ]
+      }            
+    },          
+    {
+      "$type": "AbilityData, Assembly-CSharp",
+      "Name": "Holy Fire",
+      "ID": "Cleric_HolyMagAtk_1",
+      "Desc": "Deal 25 + 10 damage per blessing. Consumes all blessings.",
+      "RequiredColors": {
+        "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          0,
+          3,
+          3,
+          0
+        ]
+      },
+      "Target": 1,
+      "Power": -25,
+      "Bonuses": {
+        "$type": "System.Collections.Generic.List`1[[BonusData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          {
+            "$type": "BonusData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "BonusType": 0,
+            "Target": 0,
+            "Stat": "Blessing",
+            "CheckAmount": 1,
+            "BonusAmount": -10
+          }
+        ]
+      },            
+      "RemovedEffects": {
+        "$type": "System.Collections.Generic.List`1[[RemovedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          {
+            "$type": "RemovedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Categories": {
+              "$type": "System.Collections.Generic.List`1[[EffectCategories, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                  0
+              ]
+            },
+            "Target": 0
+          }
+        ]
+      }            
+    },
+    {
+      "$type": "AbilityData, Assembly-CSharp",
+      "Name": "Holy Strike",
+      "ID": "Cleric_HolyPhyAtk_1",
+      "Desc": "Deal 20 + 5 damage per blessing. Consumes all blessings.",
+      "RequiredColors": {
+        "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          1,
+          0,
+          1
+        ]
+      },
+      "Target": 1,
+      "Power": -20,
+      "Bonuses": {
+        "$type": "System.Collections.Generic.List`1[[BonusData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          {
+            "$type": "BonusData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "BonusType": 0,
+            "Target": 0,
+            "Stat": "Blessing",
+            "CheckAmount": 1,
+            "BonusAmount": -5
+          }
+        ]
+      },            
+      "RemovedEffects": {
+        "$type": "System.Collections.Generic.List`1[[RemovedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          {
+            "$type": "RemovedEffectData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Categories": {
+              "$type": "System.Collections.Generic.List`1[[EffectCategories, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+              "$values": [
+                  0
+              ]
+            },
+            "Target": 0
+          }
+        ]
+      }            
+    },          
+    {
+      "$type": "AbilityData, Assembly-CSharp",
+      "Name": "Attack",
+      "Desc": "Deal 15 damage.",
+      "ID": "Cleric_PhyAtk_1",
+      "RequiredColors": {
+        "$type": "System.Collections.Generic.List`1[[AbilityColors, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "$values": [
+          1,
+          0
+        ]
+      },
+      "Target": 1,
+      "Power": -15
+    }    
+  ]
+}

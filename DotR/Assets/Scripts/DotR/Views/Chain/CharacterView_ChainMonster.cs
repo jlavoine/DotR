@@ -13,7 +13,7 @@ using System;
 
 public class CharacterView_ChainMonster : CharacterView {
     // this is an overflow queue for abilities the monster has queued up, but the view has no rooom to display
-    private Queue<ProtoAbilityData> m_queueOverflow = new Queue<ProtoAbilityData>();
+    private Queue<AbilityData> m_queueOverflow = new Queue<AbilityData>();
 
     //////////////////////////////////////////
     /// Init()
@@ -29,10 +29,10 @@ public class CharacterView_ChainMonster : CharacterView {
     //////////////////////////////////////////
     protected override void ListenForMessages( bool i_bListen ) {
         if ( i_bListen ) {
-            Messenger.AddListener<ProtoAbilityData, bool>( "MonsterQueuedAbility", OnQueuedAbility );
+            Messenger.AddListener<AbilityData, bool>( "MonsterQueuedAbility", OnQueuedAbility );
         }
         else {
-            Messenger.RemoveListener<ProtoAbilityData, bool>( "MonsterQueuedAbility", OnQueuedAbility );
+            Messenger.RemoveListener<AbilityData, bool>( "MonsterQueuedAbility", OnQueuedAbility );
         }
     }
 
@@ -42,7 +42,7 @@ public class CharacterView_ChainMonster : CharacterView {
     /// an ability, for this view to update the
     /// visual queue.
     //////////////////////////////////////////
-    private void OnQueuedAbility( ProtoAbilityData i_dataAbility, bool i_bLoading ) {
+    private void OnQueuedAbility( AbilityData i_dataAbility, bool i_bLoading ) {
         // if this ability is being loading into the view...
         if ( i_bLoading ) {
             // first see if any ability views are unset. If they aren't, init them with this ability.
@@ -64,12 +64,12 @@ public class CharacterView_ChainMonster : CharacterView {
 
             // then bump all the abilities down one view
             for ( int i = 0; i < AbilityViews.Count - 1; ++i ) {
-                ProtoAbilityData dataNext = AbilityViews[i + 1].GetAbilityData();
+                AbilityData dataNext = AbilityViews[i + 1].GetAbilityData();
                 AbilityViews[i].Init( dataNext );
             }
 
             // init the backmost ability with whatever was next from the overflow queue
-            ProtoAbilityData dataNextAbility = m_queueOverflow.Dequeue();
+            AbilityData dataNextAbility = m_queueOverflow.Dequeue();
             AbilityViews[AbilityViews.Count - 1].Init( dataNextAbility );
         }
     }

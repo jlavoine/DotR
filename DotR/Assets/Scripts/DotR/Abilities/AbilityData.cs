@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 
 //////////////////////////////////////////
-/// ProtoAbilityData
-/// Data for a prototype ability.
+/// AbilityData
+/// Immutable data for an ability.
 //////////////////////////////////////////
 
-public class ProtoAbilityData
-{
+public class AbilityData : GenericData {
     // name of the ability
     public string Name;
 
@@ -40,7 +39,7 @@ public class ProtoAbilityData
     // effects to be removed (if any)
     public List<RemovedEffectData> RemovedEffects;
 
-    public ProtoAbilityData() {
+    public AbilityData() {
         // since these are optional, let's make sure these variables are instantiated
         AppliedEffects = new List<AppliedEffectData>();
         RemovedEffects = new List<RemovedEffectData>();

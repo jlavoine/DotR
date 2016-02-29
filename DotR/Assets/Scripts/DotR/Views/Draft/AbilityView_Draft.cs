@@ -17,7 +17,7 @@ public class AbilityView_Draft : AbilityView {
     /// Inits this UI with the incoming
     /// ability data.
     //////////////////////////////////////////
-    public override void Init(ProtoAbilityData i_data) {
+    public override void Init(AbilityData i_data) {
         base.Init( i_data );
 
         // set the color of the cost tiles and destroy unnecessary cost tiles
@@ -68,7 +68,7 @@ public class AbilityView_Draft : AbilityView {
         m_nCurrentValue = 0;
 
         // queue the action
-        Messenger.Broadcast<ProtoAbilityData>( "QueueAction", m_dataAbility );
+        Messenger.Broadcast<AbilityData>( "QueueAction", m_dataAbility );
 
         // update the UI
         UpdateResourceImages();

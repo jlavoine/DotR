@@ -13,11 +13,14 @@ public class PerksManager : Singleton<PerksManager> {
     public string PlayerID;
 
     void Start() {
-        //PerkData ex = PerkData.GetExample();
+        //PlayerData ex = PlayerData.GetExample();
         //List<PlayerData> listEx = new List<PlayerData>();
         //listEx.Add( ex );
         //string json = SerializationUtils.Serialize( ex );
         //Debug.Log( json );
+
+        AbilityData test = IDL_Abilities.GetData( "Blessing_Regen" );
+        Debug.Log( test.Name );
     }
 
 }

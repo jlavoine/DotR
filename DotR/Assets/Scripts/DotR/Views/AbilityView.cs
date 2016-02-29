@@ -32,11 +32,11 @@ public abstract class AbilityView : MonoBehaviour {
     public List<Image> CostTiles;
 
     // the ability this view represents
-    protected ProtoAbilityData m_dataAbility;
+    protected AbilityData m_dataAbility;
     public bool IsSet() {
         return m_dataAbility != null;
     }
-    public ProtoAbilityData GetAbilityData() {
+    public AbilityData GetAbilityData() {
         return m_dataAbility;
     }
     public AbilityColors GetResourceUsed() {
@@ -48,7 +48,7 @@ public abstract class AbilityView : MonoBehaviour {
     /// Inits this UI with the incoming
     /// ability data.
     //////////////////////////////////////////
-    public virtual void Init( ProtoAbilityData i_data ) {
+    public virtual void Init( AbilityData i_data ) {
         m_dataAbility = i_data;
         
         // set labels

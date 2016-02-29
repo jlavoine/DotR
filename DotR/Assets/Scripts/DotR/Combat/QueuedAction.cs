@@ -14,12 +14,12 @@ public class QueuedAction {
     }
 
     // ability for the queued action
-    private ProtoAbilityData m_dataAbility;
-    public ProtoAbilityData GetData() {
+    private AbilityData m_dataAbility;
+    public AbilityData GetData() {
         return m_dataAbility;
     }
 
-    public QueuedAction( ProtoCharacterData i_char, ProtoAbilityData i_ability ) {
+    public QueuedAction( ProtoCharacterData i_char, AbilityData i_ability ) {
         m_strCharacterID = i_char.Name;
         m_dataAbility = i_ability;
     }

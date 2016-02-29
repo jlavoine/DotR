@@ -167,7 +167,7 @@ public class CharacterModel : DefaultModel {
             listColors.Add( piece.GetColor() );
 
         // go through each ability and see if it checks out
-        foreach ( ProtoAbilityData data in m_data.Abilities ) {
+        foreach ( AbilityData data in m_data.Abilities ) {
             // if even one ability matches, we're good for now
             bool bMatch = data.VerifyChain( listColors );
             if ( bMatch == true )
@@ -183,12 +183,12 @@ public class CharacterModel : DefaultModel {
     /// Returns the ability from the incoming
     /// chain of pieces. CAN RETURN NULL.
     //////////////////////////////////////////
-    public ProtoAbilityData GetAbilityFromChain( List<GamePiece_Chain> i_listChain ) {
+    public AbilityData GetAbilityFromChain( List<GamePiece_Chain> i_listChain ) {
         List<AbilityColors> listColors = new List<AbilityColors>();
         foreach ( GamePiece piece in i_listChain )
             listColors.Add( piece.GetColor() );
 
-        foreach ( ProtoAbilityData data in m_data.Abilities ) {
+        foreach ( AbilityData data in m_data.Abilities ) {
             List<AbilityColors> listRequired = data.RequiredColors;
 
             // if the chain's length doesn't match the ability's length, don't bother checking

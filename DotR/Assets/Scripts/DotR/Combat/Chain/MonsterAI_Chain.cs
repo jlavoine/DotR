@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 public class MonsterAI_Chain : MonoBehaviour {
     // queue of monster actions
-    private Queue<ProtoAbilityData> m_queueActions = new Queue<ProtoAbilityData>();
+    private Queue<AbilityData> m_queueActions = new Queue<AbilityData>();
 
     //////////////////////////////////////////
     /// Awake()
@@ -27,12 +27,12 @@ public class MonsterAI_Chain : MonoBehaviour {
         // add all monster abilities to the queue of actions
         CharacterModel modelMonster = ModelManager.Instance.GetModel( "Goblin" );
         ProtoCharacterData data = modelMonster.GetData();
-        foreach ( ProtoAbilityData ability in data.Abilities ) {
+        foreach ( AbilityData ability in data.Abilities ) {
             // put it in the queue
             m_queueActions.Enqueue( ability );
 
             // send a message so that views can react to the queuing
-            Messenger.Broadcast<ProtoAbilityData, bool>( "MonsterQueuedAbility", ability, true );
+            Messenger.Broadcast<AbilityData, bool>( "MonsterQueuedAbility", ability, true );
         }
     }
 
@@ -67,15 +67,15 @@ public class MonsterAI_Chain : MonoBehaviour {
             return;
 
         // take the first ability off the queue
-        ProtoAbilityData dataAbility = m_queueActions.Dequeue();
+        AbilityData dataAbility = m_queueActions.Dequeue();
 
         // send the ability to the action manager
         CharacterModel modelMonster = ModelManager.Instance.GetModel( "Goblin" );
-        Messenger.Broadcast<ProtoAbilityData, ProtoCharacterData>( "QueueActionWithCharacter", dataAbility, modelMonster.GetData() );
+        Messenger.Broadcast<AbilityData, ProtoCharacterData>( "QueueActionWithCharacter", dataAbility, modelMonster.GetData() );
 
         // now re-add the ability to the back of the monster's queue and send a message of the re-queue for the view
         m_queueActions.Enqueue( dataAbility );        
-        Messenger.Broadcast<ProtoAbilityData, bool>( "MonsterQueuedAbility", dataAbility, false );
+        Messenger.Broadcast<AbilityData, bool>( "MonsterQueuedAbility", dataAbility, false );
 
         // end the round now so the action is processed by the action manager (HACK)
         Messenger.Broadcast( "RoundEnded" );
