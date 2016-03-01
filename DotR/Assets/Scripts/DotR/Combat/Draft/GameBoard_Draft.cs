@@ -122,7 +122,7 @@ public class Gameboard_Draft : Singleton<Gameboard_Draft> {
     //////////////////////////////////////////
     private void SetUpCharacters() {
         // set the player and monster views
-        ProtoCharacterData charPlayer = IDL_ProtoCharacters.GetCharacter( "Cleric" );
+        ProtoCharacterData charPlayer = IDL_ProtoCharacters.GetCharacter( "Finthis" );
         CharacterView viewPlayer = GetViewFromType( CharacterTypes.Player );
         viewPlayer.Init( charPlayer );
 
@@ -145,8 +145,8 @@ public class Gameboard_Draft : Singleton<Gameboard_Draft> {
         AbilityColors eResource = i_piece.GetColor();
 
         // grant a resource to whomever is the current player
-        ProtoCharacterData dataChar = TurnManager.Instance.GetCurrentCharacter();
-        string strMessageKey = "GainResource_" + dataChar.Name;
+        DefaultModel dataChar = TurnManager.Instance.GetCurrentCharacter();
+        string strMessageKey = "GainResource_" + dataChar.GetPropertyValue<string>("Name");
         Messenger.Broadcast<AbilityColors>( strMessageKey, eResource );
 
         // a valid move has been taken, so send out a message

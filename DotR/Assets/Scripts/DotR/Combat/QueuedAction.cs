@@ -19,8 +19,8 @@ public class QueuedAction {
         return m_dataAbility;
     }
 
-    public QueuedAction( ProtoCharacterData i_char, AbilityData i_ability ) {
-        m_strCharacterID = i_char.Name;
+    public QueuedAction( DefaultModel i_char, AbilityData i_ability ) {
+        m_strCharacterID = i_char.GetPropertyValue<string>( "Name" );
         m_dataAbility = i_ability;
     }
 }

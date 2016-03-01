@@ -15,9 +15,9 @@ public class TurnManager : Singleton<TurnManager> {
 
     // current character whose turn it is
     private CharacterTypes m_eActiveCharacter;
-    private ProtoCharacterData m_dataActiveCharacter;
-    public ProtoCharacterData GetCurrentCharacter() {
-        return m_dataActiveCharacter;
+    private DefaultModel m_modelCurrentCharacter;
+    public DefaultModel GetCurrentCharacter() {
+        return m_modelCurrentCharacter;
     }
 
     // current round and turn variables
@@ -129,7 +129,7 @@ public class TurnManager : Singleton<TurnManager> {
 
         // set the active char
         m_eActiveCharacter = i_eType;
-        m_dataActiveCharacter = Gameboard_Draft.Instance.GetDataFromType( i_eType );
+        //m_modelCurrentCharacter = Gameboard_Draft.Instance.GetDataFromType( i_eType );
 
         // update the UI since the character changed
         UpdateUI();
@@ -147,7 +147,7 @@ public class TurnManager : Singleton<TurnManager> {
     //////////////////////////////////////////
     private void UpdateUI() {
         // get the name to display of whose turn it is
-        string strName = m_dataActiveCharacter.Name;
+        string strName = m_modelCurrentCharacter.GetPropertyValue<string>( "Name" );
 
         // format the help text with the current character's turn and # of moves left to make
         string strTurnText = StringTableManager.Get( "TURN_TEXT" );

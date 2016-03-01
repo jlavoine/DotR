@@ -3,7 +3,7 @@
   "$values": [
     {
       "$type": "ProtoCharacterData, Assembly-CSharp",
-      "Name": "Cleric",
+      "Name": "Finthis",
       "CharacterType" : 1,
       "HP": 100,
       "Abilities": {

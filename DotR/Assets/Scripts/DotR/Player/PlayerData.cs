@@ -27,7 +27,7 @@ public class PlayerData : GenericData {
 
         ex.ID = "P1";
         ex.Name = "Finthis";
-        ex.Class = "Cleric";
+        ex.Class = "Finthis";
         ex.XP = 1000;
         ex.Abilities = new List<string>() { "A", "B" };
         ex.Perks = new Dictionary<string, int>();
@@ -37,5 +37,21 @@ public class PlayerData : GenericData {
 
     public PlayerData() {
         Perks = new Dictionary<string, int>();
+    }
+
+    public int GetMaxHP() {
+        return 100;
+    }
+
+    public List<AbilityData> GetAbilities() {
+        List<AbilityData> listAbilities = new List<AbilityData>();
+
+        // get the ability for each key in our list of abilities
+        foreach ( string strAbilityKey in Abilities ) {
+            AbilityData ability = IDL_Abilities.GetData( strAbilityKey );
+            listAbilities.Add( ability );
+        }
+
+        return listAbilities;
     }
 }

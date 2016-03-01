@@ -132,7 +132,8 @@ public class GameBoard_Chain : Singleton<GameBoard_Chain> {
     //////////////////////////////////////////
     private void SetUpCharacters() {
         // set the player and monster views
-        ProtoCharacterData charPlayer = IDL_ProtoCharacters.GetCharacter( "Cleric" );
+        // TODO: Load from player data!
+        ProtoCharacterData charPlayer = IDL_ProtoCharacters.GetCharacter( "Finthis" );
         CharacterView viewPlayer = GetViewFromType( CharacterTypes.Player );
         viewPlayer.Init( charPlayer );
 
@@ -158,8 +159,8 @@ public class GameBoard_Chain : Singleton<GameBoard_Chain> {
         AbilityColors eResource = i_piece.GetColor();
 
         // grant a resource to whomever is the current player
-        ProtoCharacterData dataChar = TurnManager.Instance.GetCurrentCharacter();
-        string strMessageKey = "GainResource_" + dataChar.Name;
+        DefaultModel dataChar = TurnManager.Instance.GetCurrentCharacter();
+        string strMessageKey = "GainResource_" + dataChar.GetPropertyValue<string>("Name");
         Messenger.Broadcast<AbilityColors>( strMessageKey, eResource );
 
         // a valid move has been taken, so send out a message

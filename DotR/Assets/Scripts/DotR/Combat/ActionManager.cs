@@ -38,12 +38,12 @@ public class ActionManager : MonoBehaviour {
     private void ListenForMessages( bool i_bSubscribe ) {
         if ( i_bSubscribe ) {
             Messenger.AddListener<AbilityData>( "QueueAction", QueueAction );
-            Messenger.AddListener<AbilityData, ProtoCharacterData>( "QueueActionWithCharacter", QueueActionWithCharacter );
+            Messenger.AddListener<AbilityData, DefaultModel>( "QueueActionWithCharacter", QueueActionWithCharacter );
             Messenger.AddListener( "RoundEnded", ExecuteActions );
         }
         else {
             Messenger.RemoveListener<AbilityData>( "QueueAction", QueueAction );
-            Messenger.RemoveListener<AbilityData, ProtoCharacterData>( "QueueActionWithCharacter", QueueActionWithCharacter );
+            Messenger.RemoveListener<AbilityData, DefaultModel>( "QueueActionWithCharacter", QueueActionWithCharacter );
             Messenger.RemoveListener( "RoundEnded", ExecuteActions );
         }
     }
@@ -63,13 +63,13 @@ public class ActionManager : MonoBehaviour {
     //////////////////////////////////////////
     private void QueueAction( AbilityData i_dataAbility ) {
         // char whose turn it is
-        ProtoCharacterData charCurrent = TurnManager.Instance.GetCurrentCharacter();
+        DefaultModel charCurrent = TurnManager.Instance.GetCurrentCharacter();
 
         QueueActionWithCharacter( i_dataAbility, charCurrent );
     }
-    private void QueueActionWithCharacter( AbilityData i_dataAbility, ProtoCharacterData i_dataCharacter ) {
+    private void QueueActionWithCharacter( AbilityData i_dataAbility, DefaultModel i_model ) {
         // create the queued action and add it to our queue
-        QueuedAction action = new QueuedAction( i_dataCharacter, i_dataAbility );
+        QueuedAction action = new QueuedAction( i_model, i_dataAbility );
         m_queueActions.Enqueue( action );
 
        // Debug.Log( i_dataCharacter.Name + " is queuing " + i_dataAbility.Name );
@@ -194,7 +194,7 @@ public class ActionManager : MonoBehaviour {
         }
         else {
             // if the target is oppened, use the proper target...TODO fix this!
-            strTargetID = i_action.GetOwnerID() == "Cleric" ? "Goblin" : "Cleric";            
+            strTargetID = i_action.GetOwnerID() == "Finthis" ? "Goblin" : "Finthis";            
         }
 
         return ModelManager.Instance.GetModel( strTargetID );

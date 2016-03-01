@@ -57,7 +57,7 @@ public class VictoryManager : Singleton<VictoryManager> {
         }
 
         // a round is ended, so check if the game should end in defeat or victory
-        CharacterModel modelPlayer = ModelManager.Instance.GetModel( "Cleric" );
+        CharacterModel modelPlayer = ModelManager.Instance.GetModel( "Finthis" );
         CharacterModel modelMonster = ModelManager.Instance.GetModel( "Goblin" );
 
         if ( modelPlayer.IsDead() )

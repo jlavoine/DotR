@@ -11,20 +11,32 @@ public class CharacterModel : DefaultModel {
     public string Name;
 
     // data this model uses
-    private ProtoCharacterData m_data;
-    public ProtoCharacterData GetData() {
-        return m_data;
-    }
+    //private ProtoCharacterData m_data;
+    //public ProtoCharacterData GetData() {
+    //    return m_data;
+    //}
 
     //////////////////////////////////////////
     /// Awake()
     //////////////////////////////////////////
     void Awake() {
         // init data asap
-        m_data = IDL_ProtoCharacters.GetCharacter( Name );
+        if ( Name == "Goblin" ) {
+            ProtoCharacterData data = IDL_ProtoCharacters.GetCharacter( Name );
 
-        // set various things
-        SetProperty( "HP", m_data.HP );
+            // set various things
+            SetProperty( "HP", data.HP );
+            SetProperty( "Abilities", data.Abilities );
+            SetProperty( "Name", data.Name );
+        } else {
+            // load the player's data
+            PlayerData data = PlayerLoader.LoadPlayer();
+
+            SetProperty( "HP", data.GetMaxHP() );
+            SetProperty( "Name", data.Name );
+            SetProperty( "Abilities", data.GetAbilities() );
+        }
+
         SetProperty( "Effects", new Dictionary<string, Effect>() );
 
         // listen for messages
@@ -44,10 +56,10 @@ public class CharacterModel : DefaultModel {
     //////////////////////////////////////////
     private void ListenForMessages( bool i_bListen ) {
         if ( i_bListen ) {
-            Messenger.AddListener( "TurnOver_" + m_data.Name, OnTurnOver );
+            Messenger.AddListener( "TurnOver_" + GetPropertyValue<string>("Name"), OnTurnOver );
         }
         else {
-            Messenger.AddListener( "TurnOver_" + m_data.Name, OnTurnOver );
+            Messenger.AddListener( "TurnOver_" + GetPropertyValue<string>( "Name" ), OnTurnOver );
         }
     }
 
@@ -167,7 +179,8 @@ public class CharacterModel : DefaultModel {
             listColors.Add( piece.GetColor() );
 
         // go through each ability and see if it checks out
-        foreach ( AbilityData data in m_data.Abilities ) {
+        List<AbilityData> listAbilities = GetPropertyValue<List<AbilityData>>( "Abilities" );
+        foreach ( AbilityData data in listAbilities ) {
             // if even one ability matches, we're good for now
             bool bMatch = data.VerifyChain( listColors );
             if ( bMatch == true )
@@ -188,7 +201,8 @@ public class CharacterModel : DefaultModel {
         foreach ( GamePiece piece in i_listChain )
             listColors.Add( piece.GetColor() );
 
-        foreach ( AbilityData data in m_data.Abilities ) {
+        List<AbilityData> listAbilities = GetPropertyValue<List<AbilityData>>( "Abilities" );
+        foreach ( AbilityData data in listAbilities ) {
             List<AbilityColors> listRequired = data.RequiredColors;
 
             // if the chain's length doesn't match the ability's length, don't bother checking

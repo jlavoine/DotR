@@ -26,8 +26,8 @@ public class MonsterAI_Chain : MonoBehaviour {
     void LoadAbilities() {
         // add all monster abilities to the queue of actions
         CharacterModel modelMonster = ModelManager.Instance.GetModel( "Goblin" );
-        ProtoCharacterData data = modelMonster.GetData();
-        foreach ( AbilityData ability in data.Abilities ) {
+        List<AbilityData> listAbilities = modelMonster.GetPropertyValue<List<AbilityData>>( "Abilities" );
+        foreach ( AbilityData ability in listAbilities ) {
             // put it in the queue
             m_queueActions.Enqueue( ability );
 
@@ -71,7 +71,7 @@ public class MonsterAI_Chain : MonoBehaviour {
 
         // send the ability to the action manager
         CharacterModel modelMonster = ModelManager.Instance.GetModel( "Goblin" );
-        Messenger.Broadcast<AbilityData, ProtoCharacterData>( "QueueActionWithCharacter", dataAbility, modelMonster.GetData() );
+        Messenger.Broadcast<AbilityData, DefaultModel>( "QueueActionWithCharacter", dataAbility, modelMonster );
 
         // now re-add the ability to the back of the monster's queue and send a message of the re-queue for the view
         m_queueActions.Enqueue( dataAbility );        

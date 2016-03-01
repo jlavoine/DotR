@@ -14,11 +14,8 @@ public class PlayerModel : DefaultModel {
     /// Awake()
     //////////////////////////////////////////
     void Awake () {
-        // get the temp save data
-        string strData = DataUtils.LoadFile( "Player.json" );
-
-        // turn it into player data
-        PlayerData data = JsonConvert.DeserializeObject<PlayerData>( strData );
+        // load the player's data
+        PlayerData data = PlayerLoader.LoadPlayer();
 
         // set various properties based on our data
         SetProperty( "XP", data.XP );
